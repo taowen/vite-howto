@@ -1,9 +1,9 @@
 import express from 'express';
+import { createServer as createViteServer } from 'vite';
 
 async function main() {
-    const server = express()
+    const app = express()
     // auto reload in dev mode
-    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
         server: {
             middlewareMode: 'ssr',
@@ -15,8 +15,8 @@ async function main() {
             }
         }
     });
-    server.use(vite.middlewares);
-    server.all('/(.*)', async (req, resp) => {
+    app.use(vite.middlewares);
+    app.all('/(.*)', async (req, resp) => {
         req.url = req.originalUrl;
         console.log(req.method, req.url);
         const { default: handle } = await vite.ssrLoadModule('./server/server-entry.ts');
@@ -30,7 +30,7 @@ async function main() {
             }
         });
     })
-    server.listen(3000, () => {
+    app.listen(3000, () => {
         console.log('http://localhost:3000')
     });
 }
