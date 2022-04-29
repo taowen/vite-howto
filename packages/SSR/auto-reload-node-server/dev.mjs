@@ -19,7 +19,7 @@ async function main() {
     app.all('/(.*)', async (req, resp) => {
         req.url = req.originalUrl;
         console.log(req.method, req.url);
-        const { default: handle } = await vite.ssrLoadModule('./server/server-entry.ts');
+        const { default: handle } = await vite.ssrLoadModule('./server/server.ts');
         handle(req, resp, (e) => {
             if (e) {
                 vite.ssrFixStacktrace(e)

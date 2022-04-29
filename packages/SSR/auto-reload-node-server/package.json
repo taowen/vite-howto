@@ -12,7 +12,7 @@
     },
     "scripts": {
         "dev": "node dev.mjs",
-        "build": "vite build",
+        "build": "vite build server && vite build client",
         "preview": "node dist/server-entry.js"
     }
 }

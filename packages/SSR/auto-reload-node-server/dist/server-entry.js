@@ -1,12 +1,13 @@
 "use strict";
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
-var bodyParser = require("body-parser");
 var express = require("express");
+var path = require("path");
+var bodyParser = require("body-parser");
 function _interopDefaultLegacy(e) {
   return e && typeof e === "object" && "default" in e ? e : { "default": e };
 }
-var bodyParser__default = /* @__PURE__ */ _interopDefaultLegacy(bodyParser);
 var express__default = /* @__PURE__ */ _interopDefaultLegacy(express);
+var path__default = /* @__PURE__ */ _interopDefaultLegacy(path);
+var bodyParser__default = /* @__PURE__ */ _interopDefaultLegacy(bodyParser);
 const server = express__default["default"].Router();
 server.use(bodyParser__default["default"].urlencoded({ extended: false }));
 server.use(bodyParser__default["default"].json());
@@ -24,13 +25,13 @@ server.get("/", async (req, resp) => {
   <header>
     <h1>HTML5 Example Page</h1>
   </header>
+  <main></main>
+  <script type="module" src="./client/client-entry.js"><\/script>
 </body>
 </html>
     `);
 });
-{
-  const app = express__default["default"]();
-  app.use(server);
-  app.listen(3e3);
-}
-exports["default"] = server;
+const app = express__default["default"]();
+app.use(server);
+app.use("/client", express__default["default"].static(path__default["default"].join(__dirname, "client")));
+app.listen(3e3);

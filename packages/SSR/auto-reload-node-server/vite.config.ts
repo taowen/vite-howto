@@ -1,8 +1,5 @@
 import { defineConfig } from 'vite'
 
+// shared config between client and server
 export default defineConfig({
-    build: {
-        ssr: './server/server-entry.ts',
-        outDir: 'dist'
-    },
 })
