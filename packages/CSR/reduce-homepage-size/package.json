@@ -1,0 +1,15 @@
+{
+    "name": "reduce-homepage-size",
+    "private": true,
+    "version": "1.0.0",
+    "dependencies": {
+    },
+    "devDependencies": {
+        "vite": "^2.9.1"
+    },
+    "scripts": {
+        "dev": "vite dev",
+        "build": "vite build --emptyOutDir",
+        "preview": "vite preview"
+    }
+}

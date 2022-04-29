@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Laziness is a virtue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="HTML5 Example Page">
+    <script type="module">
+        window.$Page1 = () => import('./pages/page1.js');
+        window.$Page2 = () => import('./pages/page2.js');
+        window.$AllPages = import.meta.glob('./pages/**/*.js');
+        console.log(window.$AllPages);
+        window.$render = async (pageProvider) => {
+            const { default: render } = await pageProvider();
+            render();
+        }
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li><a href="#" onClick="
+        event.preventDefault();
+        $render($Page1);
+        ">Page 1</a></li>
+        <li><a href="#" onClick="
+        event.preventDefault();
+        $render($Page2);    
+        ">Page 2</a></li>
+        <li><a href="#" onClick="
+            event.preventDefault();
+            $render($AllPages['./pages/page2.js']);    
+            ">Page 2 (alt)</a></li>
+    </ul>
+    <main></main>
+</body>
+
+</html>
