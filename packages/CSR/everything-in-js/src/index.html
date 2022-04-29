@@ -11,8 +11,18 @@
     <script type="module">
         // import css will add <link> to the stylesheet
         import './demo.css';
+        import { blue } from './example.module.css';
+        import demoJson from './demo.json';
+        import demoJsonUrl from './demo.json?url';
+        import demoJsonRaw from './demo.json?raw';
+        import './some-js/demo.js';
+        const pages = import.meta.globEager('./pages/**/*.tsx')
         document.querySelector('main').innerHTML = `
         <h1>hello</h1>
+        <div class="${blue}">this is blue</div>
+        <div>${demoJsonUrl} ${JSON.stringify(demoJson)}</div>
+        <pre>${demoJsonRaw}</pre>
+        <div>${JSON.stringify(pages)}</div>
         `;
     </script>
 </body>
