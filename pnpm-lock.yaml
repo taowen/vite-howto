@@ -2,6 +2,12 @@ lockfileVersion: 5.3
 
 importers:
 
+  packages/CSR/everything-in-js:
+    specifiers:
+      vite: ^2.9.1
+    devDependencies:
+      vite: 2.9.6
+
   packages/CSR/html-dependencies:
     specifiers:
       vite: ^2.9.1
