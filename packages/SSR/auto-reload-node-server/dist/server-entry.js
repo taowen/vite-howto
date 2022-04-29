@@ -26,12 +26,12 @@ server.get("/", async (req, resp) => {
     <h1>HTML5 Example Page</h1>
   </header>
   <main></main>
-  <script type="module" src="./client/client-entry.js"><\/script>
+  <script type="module" src="/client/client-entry.js"><\/script>
 </body>
 </html>
     `);
 });
 const app = express__default["default"]();
-app.use(server);
 app.use("/client", express__default["default"].static(path__default["default"].join(__dirname, "client")));
+app.use(server);
 app.listen(3e3);
