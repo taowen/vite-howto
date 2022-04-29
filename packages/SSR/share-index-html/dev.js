@@ -1,5 +1,7 @@
-import express from 'express';
-import { createServer as createViteServer } from 'vite';
+const express = require('express');
+const { createServer: createViteServer } = require('vite');
+const fs = require('fs');
+const path = require('path');
 
 async function main() {
     const app = express()
@@ -19,7 +21,9 @@ async function main() {
     app.all('/(.*)', async (req, resp) => {
         req.url = req.originalUrl;
         console.log(req.method, req.url);
-        const { default: handle } = await vite.ssrLoadModule('./server/server.ts');
+        const { default: handle, config } = await vite.ssrLoadModule('./server/server.ts');
+        config.indexHtml = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf-8');
+        config.indexHtml = await vite.transformIndexHtml(req.url, config.indexHtml);
         handle(req, resp, (e) => {
             if (e) {
                 vite.ssrFixStacktrace(e)

@@ -1,5 +1,5 @@
 {
-    "name": "auto-reload-node-server",
+    "name": "share-index-html",
     "private": true,
     "version": "1.0.0",
     "dependencies": {
@@ -12,7 +12,7 @@
     },
     "scripts": {
         "dev": "node dev.js",
-        "build": "vite build server --emptyOutDir && vite build client --emptyOutDir",
+        "build": "vite build --ssr server/server-entry.ts --outDir dist && vite build --outDir dist/client",
         "preview": "node dist/server-entry.js"
     }
 }
