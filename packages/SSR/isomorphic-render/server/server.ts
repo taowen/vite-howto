@@ -10,7 +10,6 @@ server.use(bodyParser.json());
 
 server.get('/', async (req, resp) => {
     let rendered = config.indexHtml;
-    // we can stream output here as well
     const { modules, view, initialState } = await render('/');
     rendered = rendered.replace('<!--preload-links-->',
         renderPreloadLinks(modules, config.manifest))

@@ -45,19 +45,13 @@ This is out of vite scope, it is SSR framework agnostic.
 
 ```ts
 server.get('/', async (req, resp) => {
-    const markerPos = config.indexHtml.indexOf('<!--app-html-->');
-    if (markerPos === -1) {
-        throw new Error('maker not found, can not inject server generated content');
-    }
-    resp.write(config.indexHtml.substring(0, markerPos));
-    // we can stream output here as well
-    const { view, initialState } = await render();
-    resp.write(`
-    <main>${view}</main>
-    <template id="initialState">${JSON.stringify(initialState)}</template>
-    `);
-    resp.write(config.indexHtml.substring(markerPos));
-    resp.end();
+    let rendered = config.indexHtml;
+    const { modules, view, initialState } = await render('/');
+    rendered = rendered.replace('<!--app-html-->', `
+        ${view}`);
+    rendered = rendered.replace('<!--initial-state-->', `
+        <template id="initialState">${JSON.stringify(initialState)}</template>`);
+    resp.send(rendered);
 })
 ```
 
@@ -83,14 +77,13 @@ This page depends on its own css file, which will not be bundled to the main css
 ```ts
 server.get('/', async (req, resp) => {
     let rendered = config.indexHtml;
-    // we can stream output here as well
     const { modules, view, initialState } = await render('/');
     rendered = rendered.replace('<!--preload-links-->',
         renderPreloadLinks(modules, config.manifest))
     rendered = rendered.replace('<!--app-html-->', `
-        <main>${view}</main>
-        <template id="initialState">${JSON.stringify(initialState)}</template>
-        `);
+        ${view}`);
+    rendered = rendered.replace('<!--initial-state-->', `
+        <template id="initialState">${JSON.stringify(initialState)}</template>`);
     resp.send(rendered);
 })
 ```
