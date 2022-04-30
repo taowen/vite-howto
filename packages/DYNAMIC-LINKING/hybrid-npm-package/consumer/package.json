@@ -1,9 +1,9 @@
 {
-    "name": "use-hybrid-npm-package",
+    "name": "@hybrid-npm-package/consumer",
     "private": true,
     "version": "1.0.0",
     "dependencies": {
-        "hybrid-npm-package": "workspace:*"
+        "@hybrid-npm-package/publisher": "workspace:*"
     },
     "devDependencies": {
         "vite": "^2.9.1"

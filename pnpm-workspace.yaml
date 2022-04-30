@@ -1,4 +1,6 @@
 packages:
   - 'packages/CSR/*'
   - 'packages/SSR/*'
-  - 'packages/RDL/*'
+  - 'packages/DYNAMIC-LINKING/*'
+  - 'packages/DYNAMIC-LINKING/hybrid-npm-package/*'
+  - 'packages/DYNAMIC-LINKING/remote-package/*'

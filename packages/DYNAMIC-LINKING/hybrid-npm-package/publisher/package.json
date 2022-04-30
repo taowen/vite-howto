@@ -1,5 +1,5 @@
 {
-    "name": "hybrid-npm-package",
+    "name": "@hybrid-npm-package/publisher",
     "private": true,
     "version": "1.0.0",
     "main": "dist/lib/src/index.js",

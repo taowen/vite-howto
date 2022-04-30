@@ -1,0 +1,19 @@
+{
+    "name": "@remote-package/publisher",
+    "private": true,
+    "version": "1.0.0",
+    "main": "dist/lib/src/index.js",
+    "module": "dist/esm/src/index.js",
+    "typings": "dist/typings/src/index.d.ts",
+    "dependencies": {
+    },
+    "devDependencies": {
+        "typescript": "^4.6.4",
+        "vite": "^2.9.1"
+    },
+    "scripts": {
+        "dev": "run-p dev:**",
+        "dev:cjs": "tsc -b tsconfig.cjs.json --watch",
+        "dev:esm": "tsc -b --watch"
+    }
+}

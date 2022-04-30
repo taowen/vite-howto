@@ -4,7 +4,8 @@ import pkg from './package.json'
 export default defineConfig({
     build: {
         lib: {
-            name: 'example-lib',
+            // will be loaded as window['example-lib']
+            name: 'example-lib', 
             entry: './src/index.ts',
             formats: ['es', 'umd'],
             fileName: (format) => format === 'es' ? `esm/src/index.js` : `lib/src/index.js`,

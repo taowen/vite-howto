@@ -1,6 +1,6 @@
 # Vite How-to Guide
 
-how-to guide for CSR / SSR / Runtime Dynamic Linking / Mono Repository Workspace
+how-to guide for CSR / SSR / DYNAMIC-LINKING / STATIC-LINKING
 
 * [Client Side Rendering](./packages/CSR/)
     * [Html dependencies](./packages/CSR/html-dependencies/)
@@ -10,8 +10,9 @@ how-to guide for CSR / SSR / Runtime Dynamic Linking / Mono Repository Workspace
     * [Auto reload node server](./packages/SSR/auto-reload-node-server/)
     * [Share index.html](./packages/SSR/share-index-html/)
     * [Isomorphic render](./packages/SSR/isomorphic-render/)
-* [Runtime Dynamic Linking](./packages/RDL)
+* [Publish/Consume via CDN](./packages/DYNAMIC-LINKING)
     * [Use big library via CDN](./packages/RDL/use-big-library-via-cdn)
+* [Publish/Consume via MonoRepo](./packages/STATIC-LINKING)
 
 run `pnpm install` to install dependencies. 
 

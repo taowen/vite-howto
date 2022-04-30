@@ -20,7 +20,16 @@ importers:
     devDependencies:
       vite: 2.9.6
 
-  packages/RDL/hybrid-npm-package:
+  packages/DYNAMIC-LINKING/hybrid-npm-package/consumer:
+    specifiers:
+      '@hybrid-npm-package/publisher': workspace:*
+      vite: ^2.9.1
+    dependencies:
+      '@hybrid-npm-package/publisher': link:../publisher
+    devDependencies:
+      vite: 2.9.6
+
+  packages/DYNAMIC-LINKING/hybrid-npm-package/publisher:
     specifiers:
       '@types/jest': ^27.4.1
       '@types/lodash': ^4.14.182
@@ -39,21 +48,20 @@ importers:
       typescript: 4.6.4
       vite: 2.9.6
 
-  packages/RDL/use-big-library-via-cdn:
+  packages/DYNAMIC-LINKING/remote-package/publisher:
+    specifiers:
+      typescript: ^4.6.4
+      vite: ^2.9.1
+    devDependencies:
+      typescript: 4.6.4
+      vite: 2.9.6
+
+  packages/DYNAMIC-LINKING/use-big-library-via-cdn:
     specifiers:
       monaco-editor: ^0.33.0
       vite: ^2.9.1
     dependencies:
       monaco-editor: 0.33.0
-    devDependencies:
-      vite: 2.9.6
-
-  packages/RDL/use-hybrid-npm-package:
-    specifiers:
-      hybrid-npm-package: workspace:*
-      vite: ^2.9.1
-    dependencies:
-      hybrid-npm-package: link:../hybrid-npm-package
     devDependencies:
       vite: 2.9.6
 
