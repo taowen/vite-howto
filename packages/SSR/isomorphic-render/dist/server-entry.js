@@ -64,9 +64,9 @@ server.get("/", async (req, resp) => {
   const { modules, view, initialState } = await render();
   rendered = rendered.replace("<!--preload-links-->", renderPreloadLinks(modules, config.manifest));
   rendered = rendered.replace("<!--app-html-->", `
-        <main>${view}</main>
-        <template id="initialState">${JSON.stringify(initialState)}</template>
-        `);
+        ${view}`);
+  rendered = rendered.replace("<!--initial-state-->", `
+        <template id="initialState">${JSON.stringify(initialState)}</template>`);
   resp.send(rendered);
 });
 function renderPreloadLinks(modules, manifest) {
