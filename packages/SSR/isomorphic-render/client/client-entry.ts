@@ -1,7 +1,7 @@
 import { render } from './render';
 
-async function hydrate(main: HTMLElement) {
-    const { view } = await render();
+async function hydrate({ url, main }: { url: string, main: HTMLElement }) {
+    const { view } = await render(url);
     if (main.innerHTML === view) {
         return;
     }
@@ -9,4 +9,7 @@ async function hydrate(main: HTMLElement) {
     main.innerHTML = view;
 }
 
-hydrate(document.querySelector('main'));
+hydrate({
+    url: '/', 
+    main: document.querySelector('main')
+});
