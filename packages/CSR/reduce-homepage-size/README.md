@@ -38,7 +38,9 @@ It will contain
 
 ```js
 {
-    './pages/page2.js': { default: f },
-    './pages/page1.js': { default: f },
+    './pages/page2.js': () => import('./pages/page2.js'),
+    './pages/page1.js': () => import('./pages/page1.js'),
 }
 ```
+
+So that we do not need to write annoying `() => import(xxx)` by hand.
