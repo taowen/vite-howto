@@ -1,5 +1,6 @@
 import bodyParser from 'body-parser';
 import express from 'express';
+import { render } from '../client/render';
 
 export const config = { indexHtml: '' }
 const server = express.Router();
@@ -13,11 +14,10 @@ server.get('/', async (req, resp) => {
     }
     resp.write(config.indexHtml.substring(0, markerPos));
     // we can stream output here as well
+    const { view, initialState } = await render();
     resp.write(`
-    <header>
-        <h1>HTML5 Example Page</h1>
-    </header>
-    <main></main>
+    <main>${view}</main>
+    <template id="initialState">${JSON.stringify(initialState)}</template>
     `);
     resp.write(config.indexHtml.substring(markerPos));
     resp.end();

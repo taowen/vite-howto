@@ -1,6 +1,12 @@
-import './all.css';
+import { render } from './render';
 
-export function render(): any {
-    document.querySelector('main').innerHTML = 'hello world';
+async function hydrate(main: HTMLElement) {
+    const { view } = await render();
+    if (main.innerHTML === view) {
+        return;
+    }
+    console.warn('found server result inconsistent with client result during hydration');
+    main.innerHTML = view;
 }
-render();
+
+hydrate(document.querySelector('main'));
