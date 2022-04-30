@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "composite": true,
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "incremental": true,
+        "strict": true,
+        "sourceMap": true,
+        "declaration": true,
+        "declarationDir": "dist/typings",
+        "outDir": "dist/esm",
+        "types": [],
+        "lib": ["ESNext"]
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}
