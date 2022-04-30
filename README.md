@@ -1,6 +1,6 @@
 # Vite How-to Guide
 
-how-to guide for CSR / SSR / DYNAMIC-LINKING / STATIC-LINKING
+These are common questions in web development, they all can be solved with elegant vite/typescript configurations
 
 * [Client Side Rendering](./packages/CSR/)
     * [How to reference stylesheet/image/video from index.html](./packages/CSR/html-dependencies/)
@@ -18,6 +18,10 @@ how-to guide for CSR / SSR / DYNAMIC-LINKING / STATIC-LINKING
     * How to compile several typescript packages concurrently
     * How to avoid the top integrating package to be over bloated
 
-run `pnpm install` to install dependencies. 
+## You can play with these working demos
 
-in each package, run `pnpm dev` to start dev server, run `pnpm build && pnpm preview` to start production server.
+Download and install https://pnpm.io/
+
+Run `pnpm install` at root to install for the first time. 
+
+In each package, run `pnpm dev` to start dev server, run `pnpm build && pnpm preview` to start production server.
