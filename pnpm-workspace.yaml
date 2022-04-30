@@ -1,3 +1,4 @@
 packages:
   - 'packages/CSR/*'
   - 'packages/SSR/*'
+  - 'packages/RDL/*'

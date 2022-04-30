@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Too big to host</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="HTML5 Example Page">
+    <style>
+        body {
+            width: 800px;
+            height: 400px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <script type="module">
+    // require is provided by loader.min.js.
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+    require(["vs/editor/editor.main"], () => {
+        import('./index.ts');
+    });
+    </script>
+</body>
+
+</html>

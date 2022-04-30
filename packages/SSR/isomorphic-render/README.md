@@ -78,7 +78,7 @@ export default function(props: { greeting: string }) {
 }
 ```
 
-This page depends on its own css file, which will not bundled to the main css. When the page renders, the style `<link>` will be dynamically inserted to DOM. To fix the problem, we need to include the page own css into the SSR html output.
+This page depends on its own css file, which will not be bundled to the main css. When the page renders, the style `<link>` will be dynamically inserted to DOM causing FOUC problem. To fix it, we need to include the page own css into the SSR html output.
 
 ```ts
 server.get('/', async (req, resp) => {

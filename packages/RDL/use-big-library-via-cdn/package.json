@@ -1,0 +1,16 @@
+{
+    "name": "use-big-library-via-cdn",
+    "private": true,
+    "version": "1.0.0",
+    "dependencies": {
+        "monaco-editor": "^0.33.0"
+    },
+    "devDependencies": {
+        "vite": "^2.9.1"
+    },
+    "scripts": {
+        "dev": "vite dev",
+        "build": "vite build",
+        "preview": "vite preview"
+    }
+}
