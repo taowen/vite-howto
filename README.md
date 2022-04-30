@@ -10,11 +10,11 @@ how-to guide for CSR / SSR / DYNAMIC-LINKING / STATIC-LINKING
     * [How to auto reload node server](./packages/SSR/auto-reload-node-server/)
     * [How to share index.html between client/server](./packages/SSR/share-index-html/)
     * [How to share render code between client/server](./packages/SSR/isomorphic-render/)
-* [Publish/Consume via CDN](./packages/DYNAMIC-LINKING)
+* [Publish/Consume via CDN (Dynamic Linking)](./packages/DYNAMIC-LINKING)
     * [How to use big library via CDN](./packages/DYNAMIC-LINKING/use-big-library-via-cdn)
     * [How to publish hybrid npm package which can be used by both `<script>` and bundler](./packages/DYNAMIC-LINKING/hybrid-npm-package/)
     * [How to publish new version without asking application using the library to rebundle and redeploy](./packages/DYNAMIC-LINKING/remote-package/)
-* [Publish/Consume via MonoRepo](./packages/STATIC-LINKING)
+* [Publish/Consume via MonoRepo (Static Linking)](./packages/STATIC-LINKING)
     * How to compile several typescript packages concurrently
     * How to avoid the top integrating package to be over bloated
 
