@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 
+const page1 = () => import('./page1');
+
 export async function render() {
     let initialState: { greeting: string };
 
@@ -16,8 +18,9 @@ export async function render() {
         const node = document.getElementById('initialState') as HTMLTemplateElement;
         initialState = JSON.parse(node.content.textContent);
     }
+    const { default: page } = await page1()
     return {
-        view: `<div>${initialState.greeting}</div>`,
+        view: `${page(initialState)}`,
         initialState
     }
 }

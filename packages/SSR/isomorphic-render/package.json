@@ -12,7 +12,7 @@
     },
     "scripts": {
         "dev": "node dev.js",
-        "build:client": "vite build --outDir dist/client",
+        "build:client": "vite build --outDir dist/client --ssrManifest",
         "build:server": "vite build --ssr server/server-entry.ts --outDir dist",
         "build": "pnpm build:server && pnpm build:client",
         "preview": "node dist/server-entry.js"

@@ -30,6 +30,9 @@ var express__default = /* @__PURE__ */ _interopDefaultLegacy(express);
 var path__default = /* @__PURE__ */ _interopDefaultLegacy(path);
 var bodyParser__default = /* @__PURE__ */ _interopDefaultLegacy(bodyParser);
 var fs__default = /* @__PURE__ */ _interopDefaultLegacy(fs);
+const page1$2 = () => Promise.resolve().then(function() {
+  return page1$1;
+});
 async function render() {
   let initialState;
   {
@@ -41,8 +44,9 @@ async function render() {
     }));
     initialState = JSON.parse(fs2.readFileSync("/tmp/initialState.json", "utf-8"));
   }
+  const { default: page } = await page1$2();
   return {
-    view: `<div>${initialState.greeting}</div>`,
+    view: `${page(initialState)}`,
     initialState
   };
 }
@@ -69,3 +73,14 @@ const app = express__default["default"]();
 app.use("/assets", express__default["default"].static(path__default["default"].join(__dirname, "client", "assets")));
 app.use(server);
 app.listen(3e3);
+const page1Text = "_page1Text_1vc12_1";
+var page1_module = {
+  page1Text
+};
+function page1(props) {
+  return `<div class="${page1Text}">${props.greeting}</div>`;
+}
+var page1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  "default": page1
+}, Symbol.toStringTag, { value: "Module" }));

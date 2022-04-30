@@ -62,3 +62,9 @@ server.get('/', async (req, resp) => {
 ```
 
 here we just use JSON.stringify to embed initialState in the server generated html.
+
+## Flash of unstyled content
+
+Flash of unstyled content (FOUC) is caused by server generated html with content but without corresponding stylesheet. It is not a issue in CSR, because CSR render the  content after style inserted into the DOM. In SSR, we want the browser start rendering the content as soon as possible, before the CSR javascript starting to execute.
+
+We can reproduce the issue with following code:
