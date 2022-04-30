@@ -6,4 +6,4 @@ Vite essentially is a static linker to bundle modules as a library or applicatio
 
 In this chapter, we are going to explore how to:
 
-* Use big library via CDN
+* [Use big library via CDN](./use-big-library-via-cdn/)
