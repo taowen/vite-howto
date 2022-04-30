@@ -1,0 +1,1 @@
+console.log(require('hybrid-npm-package').awesomeFunction2());

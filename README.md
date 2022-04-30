@@ -13,4 +13,6 @@ how-to guide for CSR / SSR / Runtime Dynamic Linking / Mono Repository Workspace
 * [Runtime Dynamic Linking](./packages/RDL)
     * [Use big library via CDN](./packages/RDL/use-big-library-via-cdn)
 
-run `pnpm install` to install dependencies. in each package, run `pnpm dev` for dev server, run `pnpm build && pnpm preview` for production server.
+run `pnpm install` to install dependencies. 
+
+in each package, run `pnpm dev` to start dev server, run `pnpm build && pnpm preview` to start production server.

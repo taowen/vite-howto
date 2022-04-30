@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HTML5 Example Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HTML5 Example Page">
+</head>
+<body>
+  <header>
+    <h1>HTML5 Example Page</h1>
+  </header>
+  <script src="/hybrid-npm-package/dist/lib/src/index.js"></script>
+  <script>
+      console.log(window['example-lib'].awesomeFunction1());
+  </script>
+  <script type="importmap">
+    {
+      "imports": {
+        "lodash": "https://unpkg.com/lodash-es@4.17.21/lodash.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import { awesomeFunction2 } from 'http://localhost:4173/hybrid-npm-package/dist/esm/src/index.js'
+    console.log(awesomeFunction2());
+  </script>
+</body>
+</html>

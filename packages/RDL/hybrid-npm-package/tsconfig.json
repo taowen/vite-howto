@@ -10,7 +10,7 @@
         "declaration": true,
         "declarationDir": "dist/typings",
         "outDir": "dist/esm",
-        "types": [],
+        "types": ["jest"],
         "lib": ["ESNext"]
     },
     "include": [

@@ -1,0 +1,13 @@
+{
+    "name": "use-hybrid-npm-package",
+    "private": true,
+    "version": "1.0.0",
+    "dependencies": {
+        "hybrid-npm-package": "workspace:*"
+    },
+    "devDependencies": {
+        "vite": "^2.9.1"
+    },
+    "scripts": {
+    }
+}
