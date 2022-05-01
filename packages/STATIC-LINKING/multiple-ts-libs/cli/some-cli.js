@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const lib1 = require('@multiple-ts-libs/lib1');
 const lib2 = require('@multiple-ts-libs/lib2');
 

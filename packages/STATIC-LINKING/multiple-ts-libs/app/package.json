@@ -3,12 +3,9 @@
     "private": true,
     "version": "1.0.0",
     "dependencies": {
-        "@multiple-ts-libs/lib1": "workspace:*",
-        "@multiple-ts-libs/lib2": "workspace:*"
-    },
-    "devDependencies": {
-        "vite": "^2.9.1"
+        "@multiple-ts-libs/cli": "workspace:*"
     },
     "scripts": {
+        "try-some-cli": "some-cli"
     }
 }

@@ -1,0 +1,14 @@
+{
+    "name": "@multiple-ts-libs/cli",
+    "private": true,
+    "version": "1.0.0",
+    "dependencies": {
+        "@multiple-ts-libs/lib1": "workspace:*",
+        "@multiple-ts-libs/lib2": "workspace:*"
+    },
+    "devDependencies": {
+    },
+    "bin": {
+        "some-cli": "./some-cli.js"
+    }
+}

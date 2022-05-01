@@ -160,14 +160,17 @@ importers:
 
   packages/STATIC-LINKING/multiple-ts-libs/app:
     specifiers:
+      '@multiple-ts-libs/cli': workspace:*
+    dependencies:
+      '@multiple-ts-libs/cli': link:../cli
+
+  packages/STATIC-LINKING/multiple-ts-libs/cli:
+    specifiers:
       '@multiple-ts-libs/lib1': workspace:*
       '@multiple-ts-libs/lib2': workspace:*
-      vite: ^2.9.1
     dependencies:
       '@multiple-ts-libs/lib1': link:../lib1
       '@multiple-ts-libs/lib2': link:../lib2
-    devDependencies:
-      vite: 2.9.6
 
   packages/STATIC-LINKING/multiple-ts-libs/lib1:
     specifiers:
