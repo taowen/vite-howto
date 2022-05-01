@@ -14,6 +14,6 @@
         "build:client": "vite build --ssrManifest && mv dist/website/index.html dist/index.html && mv dist/website/ssr-manifest.json dist/ssr-manifest.json",
         "build:generate": "node generate.js",
         "build": "pnpm build:client && pnpm build:generate",
-        "preview": "vite preview"
+        "preview": "vite preview --port 3000"
     }
 }

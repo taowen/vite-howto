@@ -16,7 +16,7 @@ async function main() {
 }
 
 async function loadModule(path) {
-    const server = await vite.createServer();
+    const server = await vite.createServer({ server: { middlewareMode: 'ssr' } });
     try {
         return await server.ssrLoadModule(path);
     } finally {

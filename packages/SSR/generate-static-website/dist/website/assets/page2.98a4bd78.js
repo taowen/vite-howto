@@ -1,0 +1,1 @@
+import{l as e}from"./loadBackInitialState.e3e5f507.js";async function i(){let t={content:""};return t=e(),{title:"Page 2",view:`<div>${t.content}</div>`,initialState:t,hydrate:()=>{document.body.addEventListener("click",()=>{alert("clicked page 2")})}}}export{i as default};
