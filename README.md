@@ -1,6 +1,6 @@
 # Vite How-to Guide
 
-Provide direct modularization best practice to common web/fullstack development scenarios, applies to vue/react/... any framework
+Modularization best practice to common web/fullstack development scenarios, applies to vue/react/... any framework
 
 Just use vite (without plugins) and typescript, you can have a simple elegant workflow to develop and bundle for production.
 
