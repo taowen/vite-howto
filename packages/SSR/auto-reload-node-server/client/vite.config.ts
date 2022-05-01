@@ -1,8 +1,7 @@
-import { defineConfig } from 'vite'
+import { defineConfig, mergeConfig } from 'vite'
 import sharedConfig from '../vite.config';
 
-export default defineConfig({
-    ...sharedConfig,
+export default defineConfig(mergeConfig(sharedConfig, {
     build: {
         lib: {
             entry: './client-entry.js',
@@ -11,4 +10,4 @@ export default defineConfig({
         },
         outDir: '../dist/client'
     },
-})
+}))

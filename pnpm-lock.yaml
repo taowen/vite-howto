@@ -48,11 +48,25 @@ importers:
       typescript: 4.6.4
       vite: 2.9.6
 
-  packages/DYNAMIC-LINKING/remote-package/publisher:
+  packages/DYNAMIC-LINKING/remote-package/consumer:
     specifiers:
+      '@originjs/vite-plugin-federation': ^1.1.5
       typescript: ^4.6.4
       vite: ^2.9.1
     devDependencies:
+      '@originjs/vite-plugin-federation': 1.1.5
+      typescript: 4.6.4
+      vite: 2.9.6
+
+  packages/DYNAMIC-LINKING/remote-package/publisher:
+    specifiers:
+      '@originjs/vite-plugin-federation': ^1.1.5
+      npm-run-all: ^4.1.5
+      typescript: ^4.6.4
+      vite: ^2.9.1
+    devDependencies:
+      '@originjs/vite-plugin-federation': 1.1.5
+      npm-run-all: 4.1.5
       typescript: 4.6.4
       vite: 2.9.6
 
@@ -684,6 +698,14 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.0.6
       '@jridgewell/sourcemap-codec': 1.4.11
+    dev: true
+
+  /@originjs/vite-plugin-federation/1.1.5:
+    resolution: {integrity: sha512-rsBu/KWV591FjOpg2/zgpWwpyR3Kwja+Z0uzsmFU2jg79c6omYn/eHhHGw7JDyzPHeEcWwoyXee815NIQbWKFA==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      estree-walker: 1.0.1
+      magic-string: 0.25.9
     dev: true
 
   /@sinclair/typebox/0.23.5:
@@ -1561,6 +1583,10 @@ packages:
     resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: true
+
+  /estree-walker/1.0.1:
+    resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==}
     dev: true
 
   /etag/1.8.1:
@@ -2566,6 +2592,12 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /magic-string/0.25.9:
+    resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
+    dependencies:
+      sourcemap-codec: 1.4.8
+    dev: true
+
   /make-dir/3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
@@ -3147,6 +3179,10 @@ packages:
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /sourcemap-codec/1.4.8:
+    resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
     dev: true
 
   /spdx-correct/3.1.1:

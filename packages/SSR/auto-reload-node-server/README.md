@@ -10,16 +10,15 @@ Vite assumes majority user will write CSR application. It does not have out of b
 server/vite.config.ts
 
 ```ts
-import { defineConfig } from 'vite'
+import { defineConfig, mergeConfig } from 'vite'
 import sharedConfig from '../vite.config';
 
-export default defineConfig({
-    ...sharedConfig,
+export default defineConfig(mergeConfig(sharedConfig, {
     build: {
         ssr: './server-entry.ts',
         outDir: '../dist'
     },
-})
+}))
 ```
 
 will bundle the `server/server-entry.ts` to `dist/server-entry.js` with everything it referenced (except node.js standard library). It is in commonjs format, ready to be executed in node.js environment. `build.ssr` is provided by vite to build node.js server.
@@ -29,11 +28,10 @@ will bundle the `server/server-entry.ts` to `dist/server-entry.js` with everythi
 client/vite.config.ts
 
 ```ts
-import { defineConfig } from 'vite'
+import { defineConfig, mergeConfig } from 'vite'
 import sharedConfig from '../vite.config';
 
-export default defineConfig({
-    ...sharedConfig,
+export default defineConfig(mergeConfig(sharedConfig, {
     build: {
         lib: {
             entry: './client-entry.js',
@@ -42,7 +40,7 @@ export default defineConfig({
         },
         outDir: '../dist/client'
     },
-})
+}))
 ```
 
 it is just like the server, except format is `es`, because client run in the browser environment. the bundle output will be in `dist/client/client-entry.js`

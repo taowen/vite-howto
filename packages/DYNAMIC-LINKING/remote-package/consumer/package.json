@@ -1,0 +1,15 @@
+{
+    "name": "remote-package-consumer",
+    "private": true,
+    "version": "1.0.0",
+    "devDependencies": {
+        "@originjs/vite-plugin-federation": "^1.1.5",
+        "typescript": "^4.6.4",
+        "vite": "^2.9.1"
+    },
+    "scripts": {
+        "dev": "run-p dev:**",
+        "dev:cjs": "tsc -b tsconfig.cjs.json --watch",
+        "dev:esm": "tsc -b --watch"
+    }
+}
