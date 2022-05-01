@@ -1,9 +1,18 @@
-import { render, pages } from '../client/render';
 import path from 'path';
+import { pages, render } from '../client/render';
+import fs from 'fs';
 
 export async function generateAllPages(options: { outDir: string, indexHtml: string, manifest: any }) {
-    console.log(pages);
-    return '';
+    for (const key of Object.keys(pages)) {
+        const url = key.substring('./pages'.length, key.length - '.ts'.length);
+        const rendered = await generate({ url, ...options });
+        if (!rendered) {
+            throw new Error('url not found: ' + url);
+        }
+        const file = path.join(options.outDir, url.substring(1) + '.html');
+        console.log('generate', file);
+        fs.writeFileSync(file, rendered);
+    }
 }
 
 export async function generate(options: { url: string, indexHtml: string, manifest: any }) {
@@ -23,7 +32,6 @@ export async function generate(options: { url: string, indexHtml: string, manife
 }
 
 function renderPreloadLinks(modules, manifest) {
-    console.log('preload', modules, manifest);
     let links = ''
     const seen = new Set()
     modules.forEach((id) => {

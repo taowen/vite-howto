@@ -5,11 +5,11 @@ const path = require('path');
 async function main() {
     const { generateAllPages } = await loadModule('./server/generate.ts');
     const indexHtml = fs.readFileSync(
-        path.join(__dirname, 'dist', 'client', 'index.html'), 'utf-8');
+        path.join(__dirname, 'dist', 'index.html'), 'utf-8');
     const manifest = JSON.parse(fs.readFileSync(
-        path.join(__dirname, 'dist', 'client', 'ssr-manifest.json'), 'utf-8'))
+        path.join(__dirname, 'dist', 'ssr-manifest.json'), 'utf-8'))
     await generateAllPages({
-        outDir: path.join(__dirname, 'dist'),
+        outDir: path.join(__dirname, 'dist', 'website'),
         indexHtml,
         manifest
     });

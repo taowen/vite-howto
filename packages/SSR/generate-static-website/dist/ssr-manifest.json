@@ -1,0 +1,13 @@
+{
+  "vite/modulepreload-polyfill": [],
+  "vite/preload-helper": [],
+  "client/render.ts": [],
+  "client/client-entry.ts": [],
+  "index.html": [],
+  "client/pages/page1.ts": [
+    "/assets/page1.82730762.js"
+  ],
+  "client/pages/page2.ts": [
+    "/assets/page2.09c9dff8.js"
+  ]
+}

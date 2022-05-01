@@ -11,7 +11,7 @@
     },
     "scripts": {
         "dev": "node dev.js",
-        "build:client": "vite build --outDir dist/client --ssrManifest",
+        "build:client": "vite build --ssrManifest && mv dist/website/index.html dist/index.html && mv dist/website/ssr-manifest.json dist/ssr-manifest.json",
         "build:generate": "node generate.js",
         "build": "pnpm build:client && pnpm build:generate",
         "preview": "vite preview"
