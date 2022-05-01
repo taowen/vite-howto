@@ -21,9 +21,9 @@ export async function generate(options: { url: string, indexHtml: string, manife
     if (!renderResult) {
         return undefined;
     }
-    const { modules, view, initialState } = renderResult;
+    const { modules, title, view, initialState } = renderResult;
     rendered = rendered.replace('<!--preload-links-->',
-        renderPreloadLinks(modules, options.manifest))
+        `<title>${title}</title>` + renderPreloadLinks(modules, options.manifest))
     rendered = rendered.replace('<!--app-html-->', `
         ${view}`);
     rendered = rendered.replace('<!--initial-state-->', `
