@@ -1,15 +1,19 @@
 import { render } from './render';
 
 async function hydrate({ url, main }: { url: string, main: HTMLElement }) {
-    const { view } = await render(url);
-    if (main.innerHTML === view) {
-        return;
+    const renderResult = await render(url);
+    if (!renderResult) {
+        throw new Error('failed to render: ' + url);
     }
-    console.warn('found server result inconsistent with client result during hydration');
-    main.innerHTML = view;
+    const { view, hydrate } = renderResult;
+    if (main.innerHTML.trim() !== view.trim()) {
+        console.warn('found server result inconsistent with client result during hydration');
+        main.innerHTML = view;
+    }
+    hydrate();
 }
 
 hydrate({
-    url: '/', 
+    url: window.location.pathname, 
     main: document.querySelector('main')
 });

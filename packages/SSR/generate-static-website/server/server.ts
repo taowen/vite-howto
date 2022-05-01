@@ -5,9 +5,14 @@ import { render } from '../client/render';
 export const config = { indexHtml: '', manifest: {} }
 const server = express.Router();
 
-server.get('/', async (req, resp) => {
+server.get('/(.*)', async (req, resp) => {
     let rendered = config.indexHtml;
-    const { modules, view, initialState } = await render('/');
+    const renderResult = await render(req.url);
+    if (!renderResult) {
+        resp.status(404).end();
+        return;
+    }
+    const { modules, view, initialState } = renderResult;
     rendered = rendered.replace('<!--preload-links-->',
         renderPreloadLinks(modules, config.manifest))
     rendered = rendered.replace('<!--app-html-->', `
