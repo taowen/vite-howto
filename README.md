@@ -17,13 +17,13 @@ The guide is still work in progress, you can join the discussion with author and
     * [How to auto reload node.js server](./packages/SSR/auto-reload-node-server/)
     * [How to share index.html between client/server](./packages/SSR/share-index-html/)
     * [How to share render code between client/server](./packages/SSR/isomorphic-render/)
-    * How to generate a static website
+    * [How to generate a static website](./packages/SSR/generate-static-website/)
 * [Publish/Consume via CDN (a.k.a Dynamic Linking)](./packages/DYNAMIC-LINKING)
     * [How to use big library via CDN](./packages/DYNAMIC-LINKING/use-big-library-via-cdn)
     * [How to publish hybrid npm package which can be used by both `<script>` and bundler](./packages/DYNAMIC-LINKING/hybrid-npm-package/)
     * [How to publish new version without asking application using the library to re-bundle and re-deploy](./packages/DYNAMIC-LINKING/remote-package/)
 * [Publish/Consume via Mono Repository (a.k.a Static Linking)](./packages/STATIC-LINKING)
-    * How to modify and test multiple typescript library within a mono repository
+    * How to modify and test multiple typescript libraries within a mono repository
     * How to ensure new code end up in correct package within a mono repository
 
 ## You can play with these working demos
