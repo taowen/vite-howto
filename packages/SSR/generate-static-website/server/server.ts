@@ -1,11 +1,15 @@
 import express from 'express';
-import { generate, config } from './generate';
+import { generate } from './generate';
 
-export { config }
+export const config = { indexHtml: '', manifest: {} }
+
 const server = express.Router();
 
 server.get('/(.*)', async (req, resp) => {
-    let rendered = await generate(req.url);
+    let rendered = await generate({
+        url: req.url,
+        ...config
+    });
     if (!rendered) {
         resp.status(404).end();
         return;

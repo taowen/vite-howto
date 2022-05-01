@@ -1,17 +1,15 @@
 import { render } from '../client/render';
 import path from 'path';
 
-export const config = { indexHtml: '', manifest: {} }
-
-export async function generate(url) {
-    let rendered = config.indexHtml;
-    const renderResult = await render(url);
+export async function generate(options: { url: string, indexHtml: string, manifest: any }) {
+    let rendered = options.indexHtml;
+    const renderResult = await render(options.url);
     if (!renderResult) {
         return undefined;
     }
     const { modules, view, initialState } = renderResult;
     rendered = rendered.replace('<!--preload-links-->',
-        renderPreloadLinks(modules, config.manifest))
+        renderPreloadLinks(modules, options.manifest))
     rendered = rendered.replace('<!--app-html-->', `
         ${view}`);
     rendered = rendered.replace('<!--initial-state-->', `
