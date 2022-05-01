@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-const pages = import.meta.glob('./pages/**/*.ts')
+export const pages = import.meta.glob('./pages/**/*.ts')
 
 export async function render(url: string) {
     // let initialState: { greeting: string };

@@ -1,5 +1,10 @@
-import { render } from '../client/render';
+import { render, pages } from '../client/render';
 import path from 'path';
+
+export async function generateAllPages(options: { outDir: string, indexHtml: string, manifest: any }) {
+    console.log(pages);
+    return '';
+}
 
 export async function generate(options: { url: string, indexHtml: string, manifest: any }) {
     let rendered = options.indexHtml;
