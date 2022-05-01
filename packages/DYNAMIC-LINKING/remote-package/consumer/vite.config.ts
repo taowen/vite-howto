@@ -2,21 +2,11 @@ import { defineConfig } from 'vite'
 import federation from '@originjs/vite-plugin-federation'
 
 export default defineConfig({
-    cacheDir: 'node_modules/.cacheDir',
     plugins: [federation({
-        name: 'consumer',
-        filename: 'remoteEntry.js',
         remotes: {
             '@publisher': 'http://localhost:3001/assets/remoteEntry.js'
         },
-        shared: {
-            'remote-package-shared-store': {
-                singleton: true
-            },
-            '@vue/reactivity': {
-                singleton: true
-            }
-        }
+        shared: ['remote-package-shared-store']
     })],
     build: {
         target: 'esnext',
@@ -29,6 +19,6 @@ export default defineConfig({
         }
     },
     optimizeDeps: {
-        exclude: ['remote-package-shared-store']
+        include: ['remote-package-shared-store']
     }
 })

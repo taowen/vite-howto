@@ -12,8 +12,8 @@
         "vite": "^2.9.1"
     },
     "scripts": {
-        "dev": "run-p dev:**",
-        "dev:cjs": "tsc -b tsconfig.cjs.json --watch",
-        "dev:esm": "tsc -b --watch"
+        "dev": "vite dev",
+        "build": "vite build",
+        "preview": "vite preview --port 3000"
     }
 }

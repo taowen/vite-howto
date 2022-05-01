@@ -1,5 +1,4 @@
-import { store } from './__federation_shared_remote-package-shared-store.js';
-import { effect } from './__federation_shared_@vueReactivity.js';
+import { effect, store } from './__federation_shared_remote-package-shared-store.js';
 
 const p = function polyfill() {
     const relList = document.createElement('link').relList;
@@ -107,7 +106,7 @@ function get(name, remoteFrom){
 }
 const wrapShareModule = remoteFrom => {
   return {
-    'remote-package-shared-store':{'1.0.0':{get:()=>get('./__federation_shared_remote-package-shared-store.js', remoteFrom), loaded:1}},'@vue/reactivity':{'3.2.33':{get:()=>get('./__federation_shared_@vueReactivity.js', remoteFrom), loaded:1}}
+    'remote-package-shared-store':{'1.0.0':{get:()=>get('./__federation_shared_remote-package-shared-store.js', remoteFrom), loaded:1}}
   }
 };
 async function __federation_import(name){

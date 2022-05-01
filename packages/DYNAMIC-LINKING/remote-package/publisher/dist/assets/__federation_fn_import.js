@@ -1,6 +1,6 @@
 import { __vitePreload } from './preload-helper.a983d976.js';
 
-const moduleMap= {'remote-package-shared-store':{get:()=>()=>__federation_import('./__federation_shared_remote-package-shared-store.js'),import:true},'@vue/reactivity':{get:()=>()=>__federation_import('./__federation_shared_@vueReactivity.js'),import:true}};
+const moduleMap= {'remote-package-shared-store':{get:()=>()=>__federation_import('./__federation_shared_remote-package-shared-store.js'),import:true}};
       const moduleCache = Object.create(null);
       async function importShared(name,shareScope = 'default') {
         return moduleCache[name] ? new Promise((r) => r(moduleCache[name])) : getProviderSharedModule(name, shareScope);

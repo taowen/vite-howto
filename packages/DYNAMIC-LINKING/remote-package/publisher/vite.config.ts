@@ -3,20 +3,12 @@ import federation from '@originjs/vite-plugin-federation'
 
 export default defineConfig({
     plugins: [federation({
-        name: 'publisher',
         filename: 'remoteEntry.js',
         exposes: {
             './minusButton': 'src/minusButton.ts',
             './plusButton': 'src/plusButton.ts'
         },
-        shared: {
-            'remote-package-shared-store': {
-                singleton: true
-            },
-            '@vue/reactivity': {
-                singleton: true
-            }
-        }
+        shared: ['remote-package-shared-store']
     })],
     build: {
         target: 'esnext',
@@ -27,8 +19,5 @@ export default defineConfig({
                 minifyInternalExports: false
             }
         }
-    },
-    optimizeDeps: {
-        exclude: ['remote-package-shared-store']
     }
 })
