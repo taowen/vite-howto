@@ -6,7 +6,7 @@ Just use vite (without plugins) and typescript, you can have a simple elegant wo
 
 I write this "Vite How-to Guide" after I have read tons of Webpack/SSR/Typescript guide on the internet. They try to tell you a series of command to follow blindly without a understanding of the essential problems. Also the solution is coupled with specific frontend framework and plugins to be "one key solution". But all those encapsulation makes debugging harder. In this guide, I will tell you how to write minimal configuration to do it yourself. You know what is the essential problem, you understand the theory, you copy paste the solution, then you can modify it confidently when problem arises.
 
-The guide is still work in progress, you can join the discussion with author and readers [https://github.com/taowen/vite-howto/discussions/1](https://github.com/taowen/vite-howto/discussions/1)
+The guide is still work in progress, you can join the discussion with author and readers https://github.com/taowen/vite-howto/discussions/1
 
 * [Client Side Rendering](./packages/CSR/)
     * [How to use typescript in html without compilation step](./packages/CSR/html-dependencies/)
