@@ -1,6 +1,7 @@
-import path from 'path';
-import { pages, render } from '../client/render';
 import fs from 'fs';
+import path from 'path';
+import { getWebsiteConfig } from '../client/getWebsiteConfig';
+import { pages, render } from '../client/render';
 
 export async function generateAllPages(options: { outDir: string, indexHtml: string, manifest: any }) {
     for (const key of Object.keys(pages)) {
@@ -13,6 +14,8 @@ export async function generateAllPages(options: { outDir: string, indexHtml: str
         console.log('generate', file);
         fs.writeFileSync(file, rendered);
     }
+    fs.writeFileSync(path.join(options.outDir, 'website-config.js'),
+        `export default ${JSON.stringify(await getWebsiteConfig())}`)
 }
 
 export async function generate(options: { url: string, indexHtml: string, manifest: any }) {
@@ -31,13 +34,13 @@ export async function generate(options: { url: string, indexHtml: string, manife
     return rendered;
 }
 
-function renderPreloadLinks(modules, manifest) {
+function renderPreloadLinks(modules: any, manifest: any) {
     let links = ''
     const seen = new Set()
-    modules.forEach((id) => {
+    modules.forEach((id: any) => {
         const files = manifest[id]
         if (files) {
-            files.forEach((file) => {
+            files.forEach((file: any) => {
                 if (!seen.has(file)) {
                     seen.add(file)
                     const filename = path.basename(file)
@@ -55,7 +58,7 @@ function renderPreloadLinks(modules, manifest) {
     return links
 }
 
-function renderPreloadLink(file) {
+function renderPreloadLink(file: string) {
     if (file.endsWith('.js')) {
         return `<link rel="modulepreload" crossorigin href="${file}">`
     } else if (file.endsWith('.css')) {

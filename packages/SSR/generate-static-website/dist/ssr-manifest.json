@@ -5,22 +5,25 @@
   "client/client-entry.ts": [],
   "index.html": [],
   "client/pages/page1.css": [
-    "/assets/page1.10af7b69.js",
+    "/assets/page1.6e09e3c6.js",
     "/assets/page1.260c2d15.css"
   ],
   "client/pages/page1.ts": [
-    "/assets/page1.10af7b69.js",
+    "/assets/page1.6e09e3c6.js",
     "/assets/page1.260c2d15.css"
   ],
+  "client/getWebsiteConfig.ts": [
+    "/assets/loadBackInitialState.8c7710d3.js"
+  ],
   "client/loadBackInitialState.ts": [
-    "/assets/loadBackInitialState.e3e5f507.js"
+    "/assets/loadBackInitialState.8c7710d3.js"
   ],
   "client/pages/page2.css": [
-    "/assets/page2.98a4bd78.js",
+    "/assets/page2.6b797fad.js",
     "/assets/page2.4cb761c5.css"
   ],
   "client/pages/page2.ts": [
-    "/assets/page2.98a4bd78.js",
+    "/assets/page2.6b797fad.js",
     "/assets/page2.4cb761c5.css"
   ]
 }

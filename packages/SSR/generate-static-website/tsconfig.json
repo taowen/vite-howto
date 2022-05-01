@@ -5,7 +5,8 @@
         "moduleResolution": "node",
         "strict": true,
         "noEmit": true,
-        "types": ["jest"],
+        "allowSyntheticDefaultImports": true,
+        "types": ["express"],
         "lib": ["ESNext", "DOM"],
     },
     "include": [

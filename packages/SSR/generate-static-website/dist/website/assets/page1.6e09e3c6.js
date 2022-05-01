@@ -1,0 +1,1 @@
+import{l as i,g as a}from"./loadBackInitialState.8c7710d3.js";import"./index.e6166fda.js";async function c(){let t={content:""};t=i();const e=await a();return{title:"Page 1",view:`<div>${t.content}</div><div>${e.someConfigKey}</div>`,initialState:t,hydrate:()=>{document.body.addEventListener("click",()=>{alert("clicked page 1")})}}}export{c as default};

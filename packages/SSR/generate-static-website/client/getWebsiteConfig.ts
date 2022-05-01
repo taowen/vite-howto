@@ -12,6 +12,9 @@ async function loadWebsiteConfig() {
         // simulate reading from database
         return { someConfigKey: '=== blah ===' };
     } else {
-        return {};
+        // generate.ts will generate website-config.js
+        // server.ts will provide route for /website-config.js
+        const loc = '/website-config.js' as any;
+        return (await import(/* @vite-ignore */loc)).default;
     }
 }
