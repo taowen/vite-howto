@@ -51,8 +51,13 @@ importers:
   packages/DYNAMIC-LINKING/remote-package/consumer:
     specifiers:
       '@originjs/vite-plugin-federation': ^1.1.5
+      '@vue/reactivity': ^3.2.33
+      remote-package-shared-store: workspace:*
       typescript: ^4.6.4
       vite: ^2.9.1
+    dependencies:
+      '@vue/reactivity': 3.2.33
+      remote-package-shared-store: link:../shared-store
     devDependencies:
       '@originjs/vite-plugin-federation': 1.1.5
       typescript: 4.6.4
@@ -61,11 +66,29 @@ importers:
   packages/DYNAMIC-LINKING/remote-package/publisher:
     specifiers:
       '@originjs/vite-plugin-federation': ^1.1.5
+      '@vue/reactivity': ^3.2.33
+      npm-run-all: ^4.1.5
+      remote-package-shared-store: workspace:*
+      typescript: ^4.6.4
+      vite: ^2.9.1
+    dependencies:
+      '@vue/reactivity': 3.2.33
+      remote-package-shared-store: link:../shared-store
+    devDependencies:
+      '@originjs/vite-plugin-federation': 1.1.5
+      npm-run-all: 4.1.5
+      typescript: 4.6.4
+      vite: 2.9.6
+
+  packages/DYNAMIC-LINKING/remote-package/shared-store:
+    specifiers:
+      '@vue/reactivity': ^3.2.33
       npm-run-all: ^4.1.5
       typescript: ^4.6.4
       vite: ^2.9.1
+    dependencies:
+      '@vue/reactivity': 3.2.33
     devDependencies:
-      '@originjs/vite-plugin-federation': 1.1.5
       npm-run-all: 4.1.5
       typescript: 4.6.4
       vite: 2.9.6
@@ -856,6 +879,16 @@ packages:
     dependencies:
       '@types/yargs-parser': 21.0.0
     dev: true
+
+  /@vue/reactivity/3.2.33:
+    resolution: {integrity: sha512-62Sq0mp9/0bLmDuxuLD5CIaMG2susFAGARLuZ/5jkU1FCf9EDbwUuF+BO8Ub3Rbodx0ziIecM/NsmyjardBxfQ==}
+    dependencies:
+      '@vue/shared': 3.2.33
+    dev: false
+
+  /@vue/shared/3.2.33:
+    resolution: {integrity: sha512-UBc1Pg1T3yZ97vsA2ueER0F6GbJebLHYlEi4ou1H5YL4KWvMOOWwpYo9/QpWq93wxKG6Wo13IY74Hcn/f7c7Bg==}
+    dev: false
 
   /accepts/1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}

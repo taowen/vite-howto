@@ -2,6 +2,10 @@
     "name": "remote-package-consumer",
     "private": true,
     "version": "1.0.0",
+    "dependencies": {
+        "remote-package-shared-store": "workspace:*",
+        "@vue/reactivity": "^3.2.33"
+    },
     "devDependencies": {
         "@originjs/vite-plugin-federation": "^1.1.5",
         "typescript": "^4.6.4",
