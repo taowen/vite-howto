@@ -1,3 +1,4 @@
+import { getWebsiteConfig } from "../getWebsiteConfig";
 import { loadBackInitialState } from "../loadBackInitialState"
 import './page1.css';
 
@@ -9,9 +10,10 @@ export default async function() {
     } else {
         initialState = loadBackInitialState();
     }
+    const config = await getWebsiteConfig();
     return {
         title: 'Page 1',
-        view: `<div>${initialState.content}</div>`,
+        view: `<div>${initialState.content}</div><div>${config.someConfigKey}</div>`,
         initialState,
         hydrate: () => {
             document.body.addEventListener('click', () => {

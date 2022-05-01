@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "strict": true,
+        "noEmit": true,
+        "types": ["jest"],
+        "lib": ["ESNext", "DOM"],
+    },
+    "include": [
+        "server/**/*.ts",
+        "client/**/*.ts"
+    ]
+}

@@ -1,3 +1,4 @@
+import { getWebsiteConfig } from "../getWebsiteConfig";
 import { loadBackInitialState } from "../loadBackInitialState";
 import './page2.css'
 
@@ -9,13 +10,14 @@ export default async function() {
     } else {
         initialState = loadBackInitialState();
     }
+    const config = await getWebsiteConfig();
     return {
         title: 'Page 2',
         view: `<div>${initialState.content}</div>`,
         initialState,
         hydrate: () => {
             document.body.addEventListener('click', () => {
-                alert('clicked page 2');
+                alert('clicked page 2\n' + config.someConfigKey);
             })
         }
     }

@@ -15,5 +15,5 @@ async function hydrate({ url, main }: { url: string, main: HTMLElement }) {
 
 hydrate({
     url: window.location.pathname, 
-    main: document.querySelector('main')
+    main: document.querySelector('main')!
 });
