@@ -1,5 +1,0 @@
-SSR is more complex than CSR. It has client part and server part, but complexity is not just double the effort. There are 3 problems to solve:
-
-* [How to auto reload the node server](./auto-reload-node-server/): traditionally webpack dev server can HMR browser page. But we seldomly use webpack to run our node server in dev mode. Nodemon is not fast enough, we need to improve the developer experience by faster auto reload.
-* [How to share index.html](./share-index-html/): CSR starts with a index.html. But what about server generated page, where is the index.html? Without index.html, we lose the ability to inject css and HMR js into the html.
-* [How to isomorphic render](./isomorphic-render/): the client and server should run the same code to ensure identical render result, so that hydration can reuse existing DOM nodes.
