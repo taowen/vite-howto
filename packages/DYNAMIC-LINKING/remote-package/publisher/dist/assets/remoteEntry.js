@@ -38,9 +38,9 @@ const scriptRel = 'modulepreload';const seen$1 = {};const base = '/';const __vit
 };
 
 let moduleMap = {
-"./minusButtutton":()=>{
+"./minusButton":()=>{
       dynamicLoadingCss([]);
-      return __federation_import('./__federation_expose_MinusButtutton.js').then(module=>()=>module?.default??module)
+      return __federation_import('./__federation_expose_MinusButton.js').then(module=>()=>module?.default??module)
     },
 "./plusButton":()=>{
       dynamicLoadingCss([]);
