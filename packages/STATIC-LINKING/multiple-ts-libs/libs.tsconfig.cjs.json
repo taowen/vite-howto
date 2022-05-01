@@ -1,0 +1,9 @@
+{
+
+    "files": [],
+    "references": [{
+        "path": "./lib1/tsconfig.cjs.json"
+    }, {
+        "path": "./lib2/tsconfig.cjs.json"
+    }]
+}

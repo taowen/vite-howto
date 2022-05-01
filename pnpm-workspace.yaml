@@ -4,4 +4,5 @@ packages:
   - 'packages/DYNAMIC-LINKING/*'
   - 'packages/DYNAMIC-LINKING/hybrid-npm-package/*'
   - 'packages/DYNAMIC-LINKING/remote-package/*'
+  - 'packages/STATIC-LINKING/*'
   - 'packages/STATIC-LINKING/multiple-ts-libs/*'

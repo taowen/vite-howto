@@ -1,0 +1,16 @@
+{
+    "name": "multiple-ts-libs",
+    "private": true,
+    "version": "1.0.0",
+    "dependencies": {
+    },
+    "devDependencies": {
+        "npm-run-all": "^4.1.5",
+        "typescript": "^4.6.4"
+    },
+    "scripts": {
+        "dev": "run-p dev:**",
+        "dev:cjs": "tsc -b libs.tsconfig.cjs.json --watch",
+        "dev:esm": "tsc -b libs.tsconfig.json --watch"
+    }
+}
