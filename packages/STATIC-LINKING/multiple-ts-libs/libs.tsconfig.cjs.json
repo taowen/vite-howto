@@ -1,5 +1,4 @@
 {
-
     "files": [],
     "references": [{
         "path": "./lib1/tsconfig.cjs.json"

@@ -1,0 +1,14 @@
+{
+    "name": "@multiple-ts-libs/app",
+    "private": true,
+    "version": "1.0.0",
+    "dependencies": {
+        "@multiple-ts-libs/lib1": "workspace:*",
+        "@multiple-ts-libs/lib2": "workspace:*"
+    },
+    "devDependencies": {
+        "vite": "^2.9.1"
+    },
+    "scripts": {
+    }
+}

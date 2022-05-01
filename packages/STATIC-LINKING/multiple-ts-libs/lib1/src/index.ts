@@ -1,3 +1,3 @@
-export function lib1Function() {
+export function lib1Function(): string {
     return 'lib1';
 }

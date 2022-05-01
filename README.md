@@ -9,7 +9,6 @@ I write this "Vite How-to Guide" after I have read tons of Webpack/SSR/Typescrip
 The guide is still work in progress, you can join the discussion with author and readers https://github.com/taowen/vite-howto/discussions/1
 
 * [Client Side Rendering](./packages/CSR/)
-    * [How to use typescript in html without compilation step](./packages/CSR/html-dependencies/)
     * [How to collect static assets into a deployable bundle](./packages/CSR/html-dependencies/)
     * [How to make dependency between html and static assets less fragile](./packages/CSR/everything-in-js/)
     * [How to reduce homepage javascript bundle size](./packages/CSR/reduce-homepage-size/)
