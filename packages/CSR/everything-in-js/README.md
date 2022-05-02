@@ -10,9 +10,10 @@ A typical client side rendering application is consisted by:
 
 The motivation to leave html blank, and move logic and style into javascript is to allow
 
-* component reuse
-* make style, content, behavior close to each other, for better maintainability
-* declaractive style view enabled by framework like React
+* Component reuse: html is not good at deduplicate repeated content structure
+* Shared layout: every page rendered from same javascript file makes sharing top level layout easier.
+* Make style, content, behavior close to each other, for better maintainability. It is more likely to keep names in sync
+* Declaractive style view enabled by framework like React
 
 ## DX Problems
 

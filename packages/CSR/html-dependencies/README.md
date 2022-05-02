@@ -48,6 +48,8 @@ And the href could be
 
 All dependencies should be collected, merged and minified to produce a deployable production bundle.
 
+However, not everything has a direct reference from index.html, such as robots.txt file. There should be a way to include static asset by direct copy.
+
 ## Solution Walkthrough
 
 Nothing need to be configured, vite default configuration assumes `index.html` as the entry point, and it takes care of everything from there.
