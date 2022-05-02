@@ -23,7 +23,7 @@ Vite need to provide a illusion, that it reads directly from the disk. As long a
 
 Also the config such as `vite.config.ts` itself need to be automatically update. You do not need to restart `vite dev` after `vite.config.ts` changed.
 
-## UX Prblems
+## UX Problems
 
 There are many user experience problems with html:
 
@@ -46,7 +46,7 @@ And the href could be
 * `/mov_bbb.mp4`: relative to the root of vite project
 * `../mov_bbb.ogg`: relative to current file
 
-All dependencies should be collected, merged and minified to produce a deployable production bundle.
+Browser has limited concurrency for each host, all dependencies should be collected, merged and minified to produce a production quality bundle.
 
 However, not everything has a direct reference from index.html, such as robots.txt file. There should be a way to include static asset by direct copy.
 
