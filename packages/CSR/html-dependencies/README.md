@@ -52,4 +52,20 @@ All dependencies should be collected, merged and minified to produce a deployabl
 
 Nothing need to be configured, vite default configuration assumes `index.html` as the entry point, and it takes care of everything from there.
 
+```ts
+import path from 'path'
+import { defineConfig } from 'vite'
+
+// vite.config.ts default to use index.html as input
+module.exports = defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      }
+    }
+  }
+})
+```
+
 Only thing developer needs to do is to write standard compliant HTML/JavaScript/CSS file.
