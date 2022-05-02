@@ -1,40 +1,41 @@
 # Vite How-to Guide
 
-This guide is NOT about how to use react/vue/... framework, there are plenty of tutorial tell you how to do it. This guide is about how to split application into files/packages, how to use **TypeScript** to ensure compatibility, how to use **Vite** to link them back (either statically or dynamically).
+This guide is NOT about how to use react/vue/... framework, there are plenty of tutorial on how to use vite to compile code written in latest technology. This guide is about how to split application into files/packages, how to use **TypeScript** to ensure compatibility, how to use **Vite** to link them back (either statically or dynamically). Demo code is written in plain old javascript with vanilla WEB api.
 
 I write this "Vite How-to Guide" after I have read tons of Webpack/SSR/Typescript guide on the internet. They try to tell you a series of command to follow blindly without a understanding of the essential problems. Also the solution is coupled with specific frontend framework and plugins to be "one key solution". But all those encapsulation makes debugging harder. In this guide, I will tell you how to write minimal vite (without plugins) and typescript configuration to do it yourself. You know what is the essential problem, you understand the theory, you copy paste the solution, then you can modify it confidently when problem arises.
 
 * Client Side Rendering
-    * [How to collect used static assets into a deployable bundle](./packages/CSR/html-dependencies/)
+    * [How to only collect used static assets into a deployable bundle](./packages/CSR/html-dependencies/)
     * [How to centralize logic/style and other related dependencies into one javascript file](./packages/CSR/everything-in-js/)
     * [How to reduce homepage javascript bundle size](./packages/CSR/reduce-homepage-size/)
     * [How to write a website in multiple html files](./packages/CSR/multiple-html-pages/)
 * Server Side Rendering
     * [How to auto reload node.js server](./packages/SSR/auto-reload-node-server/)
-    * [How to share index.html between client/server](./packages/SSR/share-index-html/)
+    * [How to allow client to introduce stylesheet](./packages/SSR/share-index-html/)
     * [How to share render code between client/server](./packages/SSR/isomorphic-render/)
     * [How to generate a static website](./packages/SSR/generate-static-website/)
 * Publish/Consume via CDN (a.k.a Dynamic Linking)
-    * [How to use big library via CDN](./packages/DYNAMIC-LINKING/use-big-library-via-cdn)
+    * [How to consume big library via CDN](./packages/DYNAMIC-LINKING/use-big-library-via-cdn)
     * [How to publish hybrid npm package which can be used by both `<script>` and bundler](./packages/DYNAMIC-LINKING/hybrid-npm-package/)
     * [How to publish new version without asking application using the library to re-bundle and re-deploy](./packages/DYNAMIC-LINKING/remote-package/)
 * Publish/Consume via Mono Repository (a.k.a Static Linking)
     * [How to modify and test multiple typescript libraries within a mono repository](./packages/STATIC-LINKING/multiple-ts-libs/)
-    * How to ensure new code end up in correct package within a mono repository
+    * [How to ensure new code end up in correct package within a mono repository](./packages/STATIC-LINKING/inversion-of-control/)
 
 The guide is still work in progress, you can join the discussion with author and readers https://github.com/taowen/vite-howto/discussions/1
 
-## What we use vite for
+## Problem is more important than the solution
 
-* Split application into files/packages, and link them back (either statically or dynamically)
-* Dev server to compile and auto reload changes
-* Build deployable bundle for production
+For each topic, there are 4 parts
 
-Vite provides a wide range of modularization choices, with optimal user experience and developer experience.
+* The desired source code file/directory structure, and the motivation
+* What are the developer experience problems if structured this way
+* What are the user experience problems if structured this way
+* Solution walk through
 
-Thanks to vite, end user will not see the page load slower, after you have modularized the code.
-
-Thanks to vite, developer will not suffer from longer build time, after you have modularized the code.
+Solution tend to change rapidly, for example webpack evolves into vite. 
+But some problems are decades old, they seldom change.
+Understand the problems allow us to pick up new framework/tool faster, because you know what you are looking for.
 
 ## You can play with these working demos
 

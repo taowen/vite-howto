@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "react",
+    "jsxFactory": "vue.h",
+    "jsxFragmentFactory": "vue.Fragment",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "paths": {
+      "@plugin1": ["../demo-motherboard/src/plugin1.abstract.ts"],
+      "@plugin2": ["../demo-motherboard/src/plugin2.abstract.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+}

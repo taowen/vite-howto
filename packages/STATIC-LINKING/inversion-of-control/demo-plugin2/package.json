@@ -1,0 +1,13 @@
+{
+  "name": "demo-plugin2",
+  "private": true,
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "dependencies": {
+    "vue": "^3.2.25",
+    "demo-motherboard": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}

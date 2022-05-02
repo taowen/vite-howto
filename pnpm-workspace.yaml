@@ -6,3 +6,4 @@ packages:
   - 'packages/DYNAMIC-LINKING/remote-package/*'
   - 'packages/STATIC-LINKING/*'
   - 'packages/STATIC-LINKING/multiple-ts-libs/*'
+  - 'packages/STATIC-LINKING/inversion-of-control/*'
