@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Contact Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HTML5 Example Page">
+</head>
+
+<body>
+  <main></main>
+  <script type="module">
+    import { sharedFunc1 } from './shared';
+    document.querySelector('main').innerHTML = `${sharedFunc1()} from contact us page`;
+  </script>
+  <script type="module" src="./handleLink.js"></script>
+</body>
+
+</html>

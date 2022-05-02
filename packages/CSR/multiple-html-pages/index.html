@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="HTML5 Example Page" />
+  <link rel="stylesheet" href="./common.css" />
+  <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+  <ul>
+    <li><a href="/contactus.html">Contact Us</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <main></main>
+  <script type="module">
+    import { sharedFunc1 } from './shared';
+    import './index.js';
+    document.querySelector('main').innerHTML = `${sharedFunc1()} from index page`;
+  </script>
+  <script type="module" src="./handleLink.js"></script>
+</body>
+
+</html>
