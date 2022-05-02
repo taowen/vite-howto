@@ -1,13 +1,13 @@
 # Vite How-to Guide
 
-Modularization best practice to common web development scenarios, applies to vue/react/... any framework
+Modularization best practice to common web development scenarios, the guide applies to react/vue/... any framework. How to split application into files/packages, how to use **TypeScript** to ensure compatibility, how to use **Vite** to link them back (either statically or dynamically).
 
 I write this "Vite How-to Guide" after I have read tons of Webpack/SSR/Typescript guide on the internet. They try to tell you a series of command to follow blindly without a understanding of the essential problems. Also the solution is coupled with specific frontend framework and plugins to be "one key solution". But all those encapsulation makes debugging harder. In this guide, I will tell you how to write minimal vite (without plugins) and typescript configuration to do it yourself. You know what is the essential problem, you understand the theory, you copy paste the solution, then you can modify it confidently when problem arises.
 
 The guide is still work in progress, you can join the discussion with author and readers https://github.com/taowen/vite-howto/discussions/1
 
 * Client Side Rendering
-    * [How to collect static assets into a deployable bundle](./packages/CSR/html-dependencies/)
+    * [How to collect used static assets into a deployable bundle](./packages/CSR/html-dependencies/)
     * [How to centralize logic/style into one javascript file](./packages/CSR/everything-in-js/)
     * [How to reduce homepage javascript bundle size](./packages/CSR/reduce-homepage-size/)
     * How to split application to multiple html pages
@@ -31,13 +31,13 @@ The guide is still work in progress, you can join the discussion with author and
 * Build deployable bundle for production
 
 Vite provides a wide range of modularization choices, with optimal user experience and developer experience.
-End user will not see the page load longer, because you have modularized the code.
-Developer will not suffer from long build waiting, becuase you have modularized the code.
+End user will not see the page load slower, because you have modularized the code.
+Developer will not suffer from longer build time, becuase you have modularized the code.
 
 ## You can play with these working demos
 
 Download and install https://pnpm.io/
 
-Run `pnpm install` at root to install for the first time. 
+Run `pnpm install` to install dependencies. 
 
 In each package, run `pnpm dev` to start dev server, run `pnpm build && pnpm preview` to start production server.
