@@ -38,7 +38,7 @@ vite build --ssr server/server-entry.ts --outDir dist
 
 Instead of write another vite.config.ts, we can use --ssr to override the client vite.config.ts entry (which is index.html) for server entry.
 
-## build client
+### build client
 
 ```
 vite build --outDir dist/client
