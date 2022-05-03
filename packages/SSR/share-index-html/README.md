@@ -12,6 +12,8 @@ The motivation is to allow client application to control the html
 * to enable HMR, browser will auto refresh, do not need to manually F5 refresh
 * to inject `<link rel="stylesheet">` and other preload
 
+This setup will be useful, if we distinguish server component and client component. It is not same page render twice, one in server, one in client. But it is a page rendered in two sequential stages, server renders what is can render, and client builds upon server generated html, and render client component.
+
 ## DX Problems
 
 dev server should auto reload the node.js server when we have changed the source. nodemon can monitor soure code change and restart node process, but it takes time to restart. It would be nice to make the change without process restart.
@@ -20,14 +22,13 @@ dev server should auto reload the browser referenced client-entry.js. HMR should
 
 ## UX Problems
 
+`vite build --ssr server/server-entry.ts --outDir dist` should package every server-entry.ts dependency (except node itself), so we do not need to `npm install` again when deploy.
 
-`vite build server` should package every server-entry.ts dependency (except node itself), so we do not need to `npm install` again when deploy.
-
-`vite build client` should package every client-entry.js dependency, the javascripts should be collected, merged and minified. In this example, css in js will be translated as `<link>` inside html.
+`vite build --outDir dist/client` should package every index.html dependency, the javascripts should be collected, merged and minified. In this example, css in js will be translated as `<link>` inside html.
 
 ## Solution Walkthrough
 
-client and server will share the same vite.confit.ts config
+client and server will share the same vite.confit.ts config. client and server will share index.html.
 
 ### build server
 

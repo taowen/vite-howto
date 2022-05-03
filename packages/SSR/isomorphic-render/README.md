@@ -1,9 +1,37 @@
-# isomorphic render
+# How to share render code between client/server
 
-Isomorphic is a fancy word to say one code can run both in server (node.js) and client (browser). People want SSR because CSR is slow.
-They want to run CSR code without modification in the server and emit html directly. Let's see how vite can help.
+## Code Structure & Motivation
 
-## data loading from backend
+* client has entry index.html
+* server has entry server/server-entry.ts
+* but client/server shares same rendering logic, client/render.ts
+
+The motivation is port existign CSR application to render at server side with minimal effort.
+
+## DX Problems
+
+dev server should auto reload the node.js server when we have changed the source. nodemon can monitor soure code change and restart node process, but it takes time to restart. It would be nice to make the change without process restart.
+
+dev server should auto reload the browser referenced client-entry.js. HMR should work.
+
+## UX Problems
+
+`vite build --ssr server/server-entry.ts --outDir dist` should package every server-entry.ts dependency (except node itself), so we do not need to `npm install` again when deploy.
+
+`vite build --outDir dist/client --ssrManifest` should package every index.html dependency, the javascripts should be collected, merged and minified. In this example, css in js will be translated as `<link>` inside html.
+
+The page will be rendered again in client side (also known as hydration), it should not read from database again, to make sure hydration is fast. So the initial state read at server side need to be transfered to client side to reuse.
+
+Flash of unstyled content (FOUC) is caused by server generated html with content but without corresponding stylesheet. It is not a issue in CSR, because CSR render the content after style inserted into the DOM. In SSR, we want the browser start rendering the content as soon as possible, before the CSR javascript starting to execute. We can not put the stylesheet directly in index.html, as different page execute different javascript will have different css dependency. So to avoid FOUC, we need to know the javascript used to render the page at server side.
+
+## Solution Walkthrough
+
+The solution builds upon previous example, with these additions
+
+* ssrManifest.json to fix FOUC problem
+* initial state saved at server side, and transfer to client side
+
+### data loading from backend
 
 Page rendering requires data. We can share the render function between client and server, but the data comes from different source:
 
@@ -38,7 +66,7 @@ export async function render() {
 
 vite support conditional compilation with `import.meta.env.SSR`. The code shared between client and server actually has two copies, one for client and one for server compiled with different `import.meta.env.SSR`.
 
-## initial state transfer
+### initial state transfer
 
 How to transfer the initial state loaded at server to client?
 This is out of vite scope, it is SSR framework agnostic.
@@ -57,7 +85,7 @@ server.get('/', async (req, resp) => {
 
 here we just use JSON.stringify to embed initialState in the server generated html.
 
-## Flash of unstyled content
+### Flash of unstyled content
 
 Flash of unstyled content (FOUC) is caused by server generated html with content but without corresponding stylesheet. It is not a issue in CSR, because CSR render the  content after style inserted into the DOM. In SSR, we want the browser start rendering the content as soon as possible, before the CSR javascript starting to execute.
 
