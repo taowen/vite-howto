@@ -7,17 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="HTML5 Example Page" />
   <link rel="stylesheet" href="./about.css" />
-  <link rel="stylesheet" href="./common.css" />
+  <link rel="stylesheet" href="../common.css" />
 </head>
 
 <body>
-  <a href="/contactus.html">Contact Us</a>
+  <a href="../contactus.html">Contact Us</a>
   <main></main>
   <script type="module">
-    import { sharedFunc1 } from './shared';
+    import { sharedFunc1 } from '../shared';
     document.querySelector('main').innerHTML = `${sharedFunc1()} from about page`;
   </script>
-  <script type="module" src="./handleLink.js"></script>
+  <script type="module" src="../handleLink.js"></script>
 </body>
 
 </html>

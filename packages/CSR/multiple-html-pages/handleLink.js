@@ -29,7 +29,7 @@ async function replaceHtml(url) {
 
 if (!window.handleLinkEnabled) {
     window.handleLinkEnabled = true;
-    handleLinks();
+    handleLink();
     window.addEventListener('popstate', () => {
         replaceHtml(window.location.href);
     })
