@@ -1,13 +1,35 @@
-# Share index.html
+# How to allow client to introduce stylesheet
 
-`index.html` is very important for vite. without `index.html`
+## Code Structure & Motivation
 
-* vite can not inject HMR script to auto reload browser with latest code
-* vite can not inject css to `<head>` with `<link>`
+In previous example, client-entry.js and server-entry.ts shares nothing, it is just a reference relationship. In this example
 
-So we need to bring `index.html` back and share it in both client and server.
+* client-entry.js is replaced with index.html, client side is normal CSR setup
+* server-entry.ts will use the client index.html to render its html
 
-## build server
+The motivation is to allow client application to control the html
+
+* to enable HMR, browser will auto refresh, do not need to manually F5 refresh
+* to inject `<link rel="stylesheet">` and other preload
+
+## DX Problems
+
+dev server should auto reload the node.js server when we have changed the source. nodemon can monitor soure code change and restart node process, but it takes time to restart. It would be nice to make the change without process restart.
+
+dev server should auto reload the browser referenced client-entry.js. HMR should work.
+
+## UX Problems
+
+
+`vite build server` should package every server-entry.ts dependency (except node itself), so we do not need to `npm install` again when deploy.
+
+`vite build client` should package every client-entry.js dependency, the javascripts should be collected, merged and minified. In this example, css in js will be translated as `<link>` inside html.
+
+## Solution Walkthrough
+
+client and server will share the same vite.confit.ts config
+
+### build server
 
 ```
 vite build --ssr server/server-entry.ts --outDir dist
@@ -21,7 +43,7 @@ Instead of write another vite.config.ts, we can use --ssr to override the client
 vite build --outDir dist/client
 ```
 
-default entry is index.html. final dist with both client / server
+default entry is index.html. final dist directory contains both client / server
 
 
 ```
@@ -34,9 +56,9 @@ default entry is index.html. final dist with both client / server
 └── server-entry.js
 ```
 
-instead of client-entry.js, vite bundled the javascript to assets/index.6540b25d.js, and rewrite the html to reflect the change.
+client-entry.js is no longer client-entry.js in dist, vite bundled the javascript to assets/index.6540b25d.js, and rewrite the html to reflect the change.
 
-## how server reference client in production
+### how server reference client in production
 
 There are two things need to be referenced:
 
@@ -88,7 +110,7 @@ server.get('/', async (req, resp) => {
 export default server;
 ```
 
-## development server
+### development server
 
 We also need to inject config.indexHtml in development mode
 
@@ -116,7 +138,7 @@ vite.middlewares serves `client/client-entry.ts`
 
 config.indexHtml read from filesystem and vite.transformIndexHtml inject HMR js code to allow hot reload in browser. No matter the change is client side or server side, the browser will auto reload.
 
-## css in js
+### css in js
 
 With index.html, we can import css in js
 
