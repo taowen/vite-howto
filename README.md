@@ -37,10 +37,10 @@ Solution tend to change rapidly, for example webpack evolves into vite.
 But some problems are decades old, they seldom change.
 Understand the problems allow us to pick up new framework/tool faster, because you know what you are looking for.
 
-## You can play with these working demos
+## You can reuse these examples as starter
 
-Download and install https://pnpm.io/
+Download and install https://pnpm.io/ Run `pnpm install` to install dependencies of all packages in the workspace. 
 
-Run `pnpm install` to install dependencies. 
+In each package, run `pnpm dev` to start dev server, run `pnpm build && pnpm preview` to start production server. Make some changes to deepen your understanding.
 
-In each package, run `pnpm dev` to start dev server, run `pnpm build && pnpm preview` to start production server.
+Every example is a starter template you can reuse by copy & paste. It works better this way, than reuse by framework with lots of options & callbacks.

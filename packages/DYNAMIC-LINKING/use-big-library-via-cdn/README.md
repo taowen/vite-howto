@@ -1,5 +1,14 @@
-# Use big library via CDN
+# How to consume big library via CDN
 
+## Code Structure & Motivation
+
+## DX Problem
+
+## UX Problem
+
+## Solution Walkthrough
+
+# TODO
 ```ts
 import monaco from 'monaco-editor';
 
