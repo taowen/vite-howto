@@ -1,11 +1,37 @@
-# Auto reload node server
+# How to auto reload node.js server
 
-Vite assumes majority user will write CSR application. It does not have out of box support for node server application. The goal here is:
+## Code Structure & Motivation
 
-* `vite dev` should auto reload the node server when we have changed the source
-* `vite build` should package every dependency (except node itself), so we do not need to `npm install` again when deploy.
+This is a simplest setup of server side rendering:
 
-## build server
+* server directory: server-entry.ts executed in node.js environment, listen at http://localhost:3000 port
+* client directory: client-entry.js is imported from browser, the html is rendered by server
+
+The motivation to split code into two parts, is to move some computation from client to server, so that:
+
+* access to internal backend api
+* less traffic over the internet
+* less rendering code need to be run in slow client device
+
+We do not run same code between client and server yet, let's start from a simple scenario. server-entry.ts is like a traditional java application rendering html, client-entry is like a tranditional javascript which uses jquery.
+
+## DX Problems
+
+dev server should auto reload the node.js server when we have changed the source. nodemon can monitor soure code change and restart node process, but it takes time to restart. It would be nice to make the change without process restart.
+
+dev server should auto reload the browser referenced client-entry.js. HMR will not work yet, it will be covered in next example.
+
+## UX Problems
+
+`vite build server` should package every server-entry.ts dependency (except node itself), so we do not need to `npm install` again when deploy.
+
+`vite build client` should package every client-entry.js dependency, the javascripts should be collected, merged and minified. In this example, css in js is not possible yet, it will be covered in next example.
+
+## Solution Walkthrough
+
+Vite assumes majority user will write CSR application. It does not have out of box support for node server application. 
+
+### build server
 
 server/vite.config.ts
 
@@ -23,7 +49,7 @@ export default defineConfig(mergeConfig(sharedConfig, {
 
 will bundle the `server/server-entry.ts` to `dist/server-entry.js` with everything it referenced (except node.js standard library). It is in commonjs format, ready to be executed in node.js environment. `build.ssr` is provided by vite to build node.js server.
 
-## build client
+### build client
 
 client/vite.config.ts
 
@@ -45,7 +71,7 @@ export default defineConfig(mergeConfig(sharedConfig, {
 
 it is just like the server, except format is `es`, because client run in the browser environment. the bundle output will be in `dist/client/client-entry.js`
 
-## how server reference client in production
+### how server reference client in production
 
 when we run `node dist/server-entry.js`, the server listen at 3000 port.
 
@@ -98,7 +124,7 @@ server rendered html reference `/client/client-entry.js` which is `http://localh
 We can see SSR is not very difficult, it is just two javascript library. One in commonjs format, runs in node.js. One in es format, runs in browser.
 We just need to define 2 vite.config.ts to build this two libraries.
 
-## development server
+### development server
 
 Unlike production build, we do not want to have 2 vite.config.ts, and run two `vite dev` one for client, one for server.
 How to use 1 vite.config.ts to serve both client and server? We need to allow multiple entry point for vite.
@@ -169,7 +195,7 @@ For `http://localhost:3000/` it is rendered by server, we use `await vite.ssrLoa
 
 if we changed the server code, we can see the effect just by refreshing browser to send another request to dev server. `vite.ssrFixStacktrace(e)` will fix the exception stack trace, to report the correct original line number, instead of the line number in transformed file. vite.middlewares will check the html rendered by server, and transform the ts/js referneced by html.
 
-## missing index.html
+### missing index.html
 
 in this configuration, client entry is a js file instead of index.html, we lose the ability to inject html dependencies (such as import css in js to add stylesheet `<link>`). In next example, we will bring back index.html
 
