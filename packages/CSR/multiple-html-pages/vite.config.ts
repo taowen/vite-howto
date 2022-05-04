@@ -3,12 +3,13 @@ import { defineConfig } from 'vite'
 import fs from 'fs';
 
 module.exports = defineConfig({
+  root: 'src',
   build: {
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'index.html'),
-        about: path.resolve(__dirname, 'about', 'about.html'),
-        contactus: path.resolve(__dirname, 'contactus.html'),
+        main: path.resolve(__dirname, 'src', 'index.html'),
+        about: path.resolve(__dirname, 'src', 'about', 'about.html'),
+        contactus: path.resolve(__dirname, 'src', 'contactus.html'),
       }
     }
   },
@@ -16,7 +17,7 @@ module.exports = defineConfig({
     name: 'server side include',
     transformIndexHtml: async (html, ctx) => {
       console.log('transform', ctx.filename);
-      const header = await new Promise<string>((resolve, reject) => fs.readFile('layout/header.partial.html', 'utf-8', (err, data) => {
+      const header = await new Promise<string>((resolve, reject) => fs.readFile('src/layout/header.partial.html', 'utf-8', (err, data) => {
         if (err) {
           reject(err);
         } else {
