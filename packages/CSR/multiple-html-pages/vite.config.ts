@@ -11,7 +11,8 @@ module.exports = defineConfig({
         about: path.resolve(__dirname, 'src', 'about', 'about.html'),
         contactus: path.resolve(__dirname, 'src', 'contactus.html'),
       }
-    }
+    },
+    outDir: path.resolve(__dirname, 'dist')
   },
   plugins: [{
     name: 'server side include',
