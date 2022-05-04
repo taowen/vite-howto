@@ -13,12 +13,18 @@
             border: 1px solid #ccc;
         }
     </style>
-  <script type="module" crossorigin src="/assets/index.fcd40c73.js"></script>
+  <script type="module" crossorigin src="/assets/index.a8af7f97.js"></script>
 </head>
 
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
     
-</body>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+            <script type="module">
+            // require is provided by loader.min.js.
+            require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+            require(["vs/editor/editor.main"], window.onMonacoLoaded);
+            </script>
+            </body>
 
 </html>
