@@ -1,0 +1,20 @@
+{
+    "name": "dev-client-server-together",
+    "private": true,
+    "version": "1.0.0",
+    "dependencies": {
+        "body-parser": "^1.20.0",
+        "express": "^5.0.0-beta.1"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.13",
+        "vite": "^2.9.1"
+    },
+    "scripts": {
+        "dev": "node dev.js",
+        "build:client": "vite build client --emptyOutDir",
+        "build:server": "vite build server --emptyOutDir",
+        "build": "build:server && build:client",
+        "preview": "node dist/server-entry.js"
+    }
+}

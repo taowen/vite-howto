@@ -119,6 +119,19 @@ importers:
       '@types/express': 4.17.13
       vite: 2.9.6
 
+  packages/SSR/dev-client-server-together:
+    specifiers:
+      '@types/express': ^4.17.13
+      body-parser: ^1.20.0
+      express: ^5.0.0-beta.1
+      vite: ^2.9.1
+    dependencies:
+      body-parser: 1.20.0
+      express: 5.0.0-beta.1
+    devDependencies:
+      '@types/express': 4.17.13
+      vite: 2.9.6
+
   packages/SSR/generate-static-website:
     specifiers:
       '@types/express': ^4.17.13

@@ -11,6 +11,7 @@ I write this "Vite How-to Guide" after I have read tons of Webpack/SSR/Typescrip
     * [How to write a website in multiple html files](./packages/CSR/multiple-html-pages/)
 * Server Side Rendering
     * [How to auto reload node.js server](./packages/SSR/auto-reload-node-server/)
+    * [How to develop client and server together](./packages/SSR/dev-client-server-together/)
     * [How to allow client to introduce stylesheet](./packages/SSR/share-index-html/)
     * [How to share render code between client/server](./packages/SSR/isomorphic-render/)
     * [How to generate a static website](./packages/SSR/generate-static-website/)

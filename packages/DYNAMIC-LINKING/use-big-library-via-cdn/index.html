@@ -16,18 +16,18 @@
 </head>
 
 <body>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
-    <script type="module">
-    // require is provided by loader.min.js.
-    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
-    require(["vs/editor/editor.main"], window.onMonacoLoaded);
-    </script> -->
     <script type="module">
         window.onMonacoLoaded = async () => {
             const { renderApp } = await import('./index.ts');
             renderApp();
         };
     </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <script type="module">
+    // require is provided by loader.min.js.
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+    require(["vs/editor/editor.main"], window.onMonacoLoaded);
+    </script> -->
 </body>
 
 </html>
