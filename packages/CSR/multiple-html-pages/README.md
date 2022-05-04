@@ -12,6 +12,8 @@ Declaring dependencies manually is annonying. Page dependencies should be infere
 
 Two page might have common dependencies, should have preset to deal with these common dependencies. Developer want to set a strategy, and let vite to arrange code into different chunks automatically. 
 
+Ｍultiple html files might have common header / footer. We do want manually keep them in sync. There should be way to extract out the common layout into separate files.
+
 ## UX Problems
 
 Assets and javascripts should be bundled if possible. Even split into pages requires some dynamic loading, but separate file should be kept minimal.
@@ -21,6 +23,8 @@ One page might have multiple files (stylesheet, js, etc), they should be loaded 
 Click link to another html file will cause the browser to reload whole page, it would be nice to mimic client side rendering behavior to use fetch instead of whole page refresh.
 
 ## Solution Walkthrough
+
+### multiple entries
 
 We need to provide the list of html files to vite.config.ts
 
@@ -101,3 +105,33 @@ if (!window.handleLinkEnabled) {
 ```
 
 What it does is like es6 dynamic `import()` to load the next page content/behavior with fetch, then apply it to DOM. Using a html file to represent a page, and dynamically download it, is much more natural than using javascript to represent a page.
+
+### server side include
+
+```ts
+import path from 'path'
+import { defineConfig } from 'vite'
+import fs from 'fs';
+
+module.exports = defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        about: path.resolve(__dirname, 'about', 'about.html'),
+        contactus: path.resolve(__dirname, 'contactus.html'),
+      }
+    }
+  },
+  plugins: [{
+    name: 'server side include',
+    transformIndexHtml(html, ctx) {
+      console.log('transform', ctx.filename);
+      html = html.replace('<body>', `<body>${fs.readFileSync('layout/header.partial.html', 'utf-8')}`);
+      return html;
+    }
+  }]
+})
+```
+
+`vite dev` and `vite build` will both call `transformIndexHtml` to allow us to do server side include.

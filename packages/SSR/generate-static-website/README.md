@@ -3,10 +3,10 @@
 ## Code Structure & Motivation
 
 Majority of code is in client directory, it is a typical CSR application. To generate a website statically, we need to statically know how many pages to generate.
-Using dynamic `import()` embed in javascript file will make it hard iterate all pages, so a file based routing is used:
+Using dynamic `import()` embeded in javascript file will make it hard iterate all pages, so a file based routing is used:
 
-* pages/page1.ts is page1, will generate page1.html
-* pages/page2.ts is page2, will generate page2.html
+* client/pages/page1.ts is page1, will generate page1.html
+* client/pages/page2.ts is page2, will generate page2.html
 
 It is imported as `import.meta.glob('./pages/**/*.ts')`
 
@@ -36,6 +36,7 @@ Flash of unstyled content (FOUC) is caused by statically generated html with con
 ### file based routing
 
 ```ts
+// client/render.ts
 export const pages = import.meta.glob('./pages/**/*.ts')
 
 export async function render(url: string) {
@@ -55,11 +56,12 @@ export async function render(url: string) {
 }
 ```
 
-vite support `import.meta.glob` to read from filesystem.
+vite support `import.meta.glob` to read from filesystem. `export const pages` for server/generate.ts
 
 ### generate all pages
 
 ```ts
+// sever/generate.ts
 import fs from 'fs';
 import path from 'path';
 import { getWebsiteConfig } from '../client/getWebsiteConfig';
@@ -97,6 +99,7 @@ we reuse `vite build` and generate.ts build upon its build result:
 the build result read by generate.js
 
 ```js
+// generate.js
 async function main() {
     const { generateAllPages } = await loadModule('./server/generate.ts');
     const indexHtml = fs.readFileSync(
@@ -111,7 +114,7 @@ async function main() {
 }
 ```
 
-loadModule use vite to compile ts to js, so we can use `node generate.js` without compile generate.ts first. Here vite is used like ts-node to execute command line.
+loadModule use vite to compile ts to js on the fly, so we can use `node generate.js` without compile generate.ts first. Here vite is used like ts-node to execute command line.
 
 ### initial state and website config
 
@@ -144,7 +147,7 @@ export default async function() {
 }
 ```
 
-the page is rendered from data provided by initial state and website config. The page1.ts render function will be executed by generate once, and execute at the browser. When execute by generate, `import.meta.env.SSR` will be true, the data will read from database, if false it will use `loadBackInitialState`
+the page is rendered from data provided by initial state and website config. The page1.ts render function will be executed twice, once by generate at the server, and then be executed at the browser again. When execute by generate, `import.meta.env.SSR` will be true, the data will read from database, if false it will use `loadBackInitialState` to read from browser DOM.
 
 ```ts
 export function loadBackInitialState(): any {
@@ -154,7 +157,7 @@ export function loadBackInitialState(): any {
 }
 ```
 
-initial state is embed in the page static html. `getWebsiteConfig` also work in the same way:
+initial state is embeded in the page static html. `getWebsiteConfig` also work in the same way:
 
 ```ts
 let cache: any;
@@ -189,4 +192,4 @@ server.get('/website-config.js', async (req, resp) => {
 })
 ```
 
-during website generation, we genate the website-config.js file as part of generateAllPages
+during website generation, we genate the website-config.js file as part of `generateAllPages`

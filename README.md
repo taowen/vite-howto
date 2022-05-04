@@ -1,6 +1,6 @@
 # Vite How-to Guide
 
-This guide is NOT about how to use react/vue/... framework, there are plenty of tutorial on how to use vite to compile code written in latest and hottest technology. This guide is about how to split application into files/packages, how to use **TypeScript** to ensure compatibility, how to use **Vite** to link them back (either statically or dynamically). Demo code is written in plain old javascript using vanilla web api.
+There are plenty of tutorials on how to use vite to compile code written in latest and hottest technology, this guide is different. It is about how to split application into files/packages, how to use **TypeScript** to ensure compatibility, how to use **Vite** to link them back (either statically or dynamically). Demo code is written in plain old javascript using vanilla web api.
 
 I write this "Vite How-to Guide" after I have read tons of Webpack/SSR/Typescript guide on the internet. They try to tell you a series of command to follow blindly without a understanding of the essential problems. Also the solution is coupled with specific frontend framework and plugins to be "one key solution". But all those encapsulation makes debugging harder. In this guide, I will tell you how to write minimal vite (without plugins) and typescript configuration to do it yourself. You know what is the essential problem, you understand the theory, you copy paste the solution, then you can modify it confidently when problem arises.
 
@@ -24,7 +24,7 @@ I write this "Vite How-to Guide" after I have read tons of Webpack/SSR/Typescrip
 
 The guide is still work in progress, you can join the discussion with author and readers https://github.com/taowen/vite-howto/discussions/1
 
-## Problem is more important than the solution
+## Problems are more important than the solutions
 
 For each topic, there are 4 parts
 
