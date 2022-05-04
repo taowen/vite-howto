@@ -15,7 +15,6 @@ async function main() {
             }
         }
     });
-    app.use(vite.middlewares);
     app.all('/(.*)', async (req, resp) => {
         req.url = req.originalUrl;
         console.log(req.method, req.url);

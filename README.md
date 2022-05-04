@@ -9,6 +9,7 @@ I write this "Vite How-to Guide" after I have read tons of Webpack/SSR/Typescrip
     * [How to centralize logic/style and other related dependencies into one javascript file](./packages/CSR/everything-in-js/)
     * [How to reduce homepage javascript bundle size](./packages/CSR/reduce-homepage-size/)
     * [How to write a website in multiple html files](./packages/CSR/multiple-html-pages/)
+    * How to publish library with stylesheet and wasm dependencies
 * Server Side Rendering
     * [How to auto reload node.js server](./packages/SSR/auto-reload-node-server/)
     * [How to develop client and server together](./packages/SSR/dev-client-server-together/)

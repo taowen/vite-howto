@@ -12,9 +12,7 @@
     },
     "scripts": {
         "dev": "node dev.js",
-        "build:client": "vite build client --emptyOutDir",
-        "build:server": "vite build server --emptyOutDir",
-        "build": "build:server && build:client",
+        "build": "vite build server --emptyOutDir",
         "preview": "node dist/server-entry.js"
     }
 }

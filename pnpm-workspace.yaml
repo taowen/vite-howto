@@ -1,5 +1,6 @@
 packages:
   - 'packages/CSR/*'
+  - 'packages/CSR/library-with-assets/*'
   - 'packages/SSR/*'
   - 'packages/DYNAMIC-LINKING/*'
   - 'packages/DYNAMIC-LINKING/hybrid-npm-package/*'

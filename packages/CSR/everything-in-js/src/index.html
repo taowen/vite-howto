@@ -16,6 +16,7 @@
         import demoJsonUrl from './demo.json?url';
         import demoJsonRaw from './demo.json?raw';
         import './some-js/demo.js';
+        import initWasm from './demo.wasm'
         const pages = import.meta.globEager('./pages/**/*.tsx')
         document.querySelector('main').innerHTML = `
         <h1>hello</h1>
@@ -24,6 +25,11 @@
         <pre>${demoJsonRaw}</pre>
         <div>${JSON.stringify(pages)}</div>
         `;
+        async function loadWasm() {
+          const { add } = await initWasm();
+          console.log('1+1', add(1,1));
+        }
+        loadWasm();
     </script>
 </body>
 </html>
