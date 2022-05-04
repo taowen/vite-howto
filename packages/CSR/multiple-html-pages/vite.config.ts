@@ -14,9 +14,16 @@ module.exports = defineConfig({
   },
   plugins: [{
     name: 'server side include',
-    transformIndexHtml(html, ctx) {
+    transformIndexHtml: async (html, ctx) => {
       console.log('transform', ctx.filename);
-      html = html.replace('<body>', `<body>${fs.readFileSync('layout/header.partial.html', 'utf-8')}`);
+      const header = await new Promise<string>((resolve, reject) => fs.readFile('layout/header.partial.html', 'utf-8', (err, data) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      }))
+      html = html.replace('<body>', `<body>${header}`);
       return html;
     }
   }]
