@@ -1,4 +1,4 @@
-import './client.css?inline'
+import './client.css'
 
 export function render(): any {
     document.querySelector('main').innerHTML = 'hello world';

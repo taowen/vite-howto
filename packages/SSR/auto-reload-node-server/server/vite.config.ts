@@ -1,9 +1,8 @@
-import { defineConfig, mergeConfig } from 'vite'
-import sharedConfig from '../vite.config';
+import { defineConfig } from 'vite'
 
-export default defineConfig(mergeConfig(sharedConfig, {
+export default defineConfig({
     build: {
         ssr: './server-entry.ts',
         outDir: '../dist'
     },
-}))
+})

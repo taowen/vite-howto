@@ -1,4 +1,4 @@
-# How to auto reload node.js server
+# How to develop client and server together
 
 ## Code Structure & Motivation
 
@@ -28,8 +28,6 @@ dev server should auto reload the browser referenced client-entry.js. HMR will n
 `vite build client` should package every client-entry.js dependency, the javascripts should be collected, merged and minified. In this example, css in js is not possible yet, it will be covered in next example.
 
 ## Solution Walkthrough
-
-Vite assumes majority user will write CSR application. It does not have out of box support for node server application. 
 
 ### build server
 
@@ -197,5 +195,5 @@ if we changed the server code, we can see the effect just by refreshing browser 
 
 ### missing index.html
 
-in this configuration, client entry is a js file instead of index.html, we lose the ability to inject html dependencies (such as import css in js to add stylesheet `<link>`). In next example, we will bring back index.html
+in this configuration, client entry is a js file instead of index.html, we lose the ability to inject html dependencies (such as import css in js to add stylesheet `<link>`). If we reference css from client-entry.js, the css will be placed in dist/client/style.css as a separate file.
 
