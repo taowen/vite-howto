@@ -103,8 +103,8 @@ package.json need following keys to make it hybrid
 "typings": "dist/typings/src/index.d.ts",
 "exports": {
     ".": {
-        "import": "./dist/lib/src/index.js",
-        "require": "./dist/esm/src/index.js"
+        "require": "./dist/lib/src/index.js",
+        "import": "./dist/esm/src/index.js"
     }
 }
 ```

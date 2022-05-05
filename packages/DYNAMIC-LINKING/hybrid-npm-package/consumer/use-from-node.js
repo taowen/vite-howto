@@ -1,1 +1,1 @@
-console.log(require('hybrid-npm-package').awesomeFunction2());
+console.log(require('@hybrid-npm-package/publisher').awesomeFunction2());
