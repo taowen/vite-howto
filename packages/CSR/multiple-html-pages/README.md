@@ -10,9 +10,9 @@ The motivation is to use use good old web technique to hand write a website.
 
 Declaring dependencies manually is annonying. Page dependencies should be infered from html source code.
 
-Two page might have common dependencies, should have preset to deal with these common dependencies. Developer want to set a strategy, and let vite to arrange code into different chunks automatically. 
+Two pages might have common dependencies, should have preset to deal with these common dependencies. Developer want to set a strategy, and let vite to arrange code into different chunks automatically. 
 
-Ｍultiple html files might have common header / footer. We do want manually keep them in sync. There should be way to extract out the common layout into separate files.
+Multiple html files might have common header / footer. We do want manually keep them in sync. There should be way to extract out the common layout into separate files.
 
 ## UX Problems
 
