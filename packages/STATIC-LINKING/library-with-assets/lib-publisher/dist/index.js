@@ -28,7 +28,7 @@ var demo_module = {
 };
 async function render() {
   const { add } = await initWasm();
-  add(1, 1);
+  console.log("1+1", add(1, 1));
   return `<div class="${blue}">hello</div><div class="${red}">world</div>`;
 }
 export { render };

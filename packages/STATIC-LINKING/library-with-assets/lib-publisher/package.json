@@ -10,8 +10,7 @@
     },
     "files": ["dist", "src"],
     "scripts": {
-        "dev": "vite dev",
-        "build": "vite build --emptyOutDir",
-        "preview": "vite preview"
+        "dev": "vite build --watch",
+        "build": "vite build --emptyOutDir"
     }
 }
