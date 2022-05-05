@@ -9,8 +9,8 @@
 <body>
     <main></main>
     <script type="module">
-        import { render } from '@library-with-assets/publisher';
-        // import '@library-with-assets/publisher/dist/style.css';
+        import { render } from '@library-with-assets/lib-publisher';
+        import '@library-with-assets/lib-publisher/dist/style.css';
         (async() => {
             document.querySelector('main').innerHTML = await render();
         })();

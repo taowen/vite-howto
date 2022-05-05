@@ -9,7 +9,6 @@ I write this "Vite How-to Guide" after I have read tons of Webpack/SSR/Typescrip
     * [How to centralize logic/style and other related dependencies into one javascript file](./packages/CSR/everything-in-js/)
     * [How to reduce homepage javascript bundle size](./packages/CSR/reduce-homepage-size/)
     * [How to write a website in multiple html files](./packages/CSR/multiple-html-pages/)
-    * How to publish library with stylesheet and wasm dependencies
 * Server Side Rendering
     * [How to auto reload node.js server](./packages/SSR/auto-reload-node-server/)
     * [How to develop client and server together](./packages/SSR/dev-client-server-together/)
@@ -21,6 +20,7 @@ I write this "Vite How-to Guide" after I have read tons of Webpack/SSR/Typescrip
     * [How to publish hybrid npm package which can be used by both `<script>` and bundler](./packages/DYNAMIC-LINKING/hybrid-npm-package/)
     * [How to publish new version without asking application using the library to re-bundle and re-deploy](./packages/DYNAMIC-LINKING/remote-package/)
 * Publish/Consume via Mono Repository (a.k.a Static Linking)
+    * [How to publish library with stylesheet and wasm dependencies](./packages/STATIC-LINKING/library-with-assets/)
     * [How to modify and test multiple typescript libraries within a mono repository](./packages/STATIC-LINKING/multiple-ts-libs/)
     * [How to ensure new code end up in correct package within a mono repository](./packages/STATIC-LINKING/inversion-of-control/)
 

@@ -14,16 +14,16 @@ importers:
     devDependencies:
       vite: 2.9.6
 
-  packages/CSR/library-with-assets/consumer:
+  packages/CSR/library-with-assets/lib-consumer:
     specifiers:
-      '@library-with-assets/publisher': workspace:*
+      '@library-with-assets/lib-publisher': workspace:*
       vite: ^2.9.1
     dependencies:
-      '@library-with-assets/publisher': link:../publisher
+      '@library-with-assets/lib-publisher': link:../lib-publisher
     devDependencies:
       vite: 2.9.6
 
-  packages/CSR/library-with-assets/publisher:
+  packages/CSR/library-with-assets/lib-publisher:
     specifiers:
       vite: ^2.9.1
     devDependencies:

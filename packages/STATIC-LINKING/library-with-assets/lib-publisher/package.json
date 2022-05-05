@@ -1,13 +1,14 @@
 {
-    "name": "@library-with-assets/consumer",
+    "name": "@library-with-assets/lib-publisher",
     "private": true,
     "version": "1.0.0",
+    "main": "dist/index.js",
     "dependencies": {
-        "@library-with-assets/publisher": "workspace:*"
     },
     "devDependencies": {
         "vite": "^2.9.1"
     },
+    "files": ["dist", "src"],
     "scripts": {
         "dev": "vite dev",
         "build": "vite build --emptyOutDir",
