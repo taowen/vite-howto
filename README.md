@@ -39,7 +39,7 @@ Solution tend to change rapidly, for example webpack evolves into vite.
 But some problems are decades old, they seldom change.
 Understand the problems allow us to pick up new framework/tool faster, because you know what you are looking for.
 
-## You can reuse these examples as starter
+## You can reuse these examples as starter template
 
 Download and install https://pnpm.io/ Run `pnpm install` to install dependencies of all packages in the workspace. 
 
