@@ -94,5 +94,4 @@ We use `await vite.ssrLoadModule('./server/server.ts')` to transform the code an
 });
 ```
 
-If we changed the server code, we can see the effect just by refreshing browser to send another request to dev server. `vite.ssrFixStacktrace(e)` will fix the exception stack trace, to report the correct original line number, instead of the line number in transformed file. vite.middlewares will check the html rendered by server, and transform the ts/js referneced by html.
-
+If we changed the server code, we can see the effect just by refreshing browser to send another request to dev server. `vite.ssrFixStacktrace(e)` will fix the exception stack trace, to report the correct original line number, instead of the line number in transformed file. 
