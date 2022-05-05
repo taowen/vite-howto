@@ -15,7 +15,9 @@ By controlling what dependency each package can have (via package.json), we can 
 
 ## DX Problems
 
-Abstract interface should be defined without ceremony. It should use javascript standard syntax. 
+Abstract interface should be defined without ceremony. It should use TypeScript standard syntax. 
+
+demo-motherboard is not just pure abstract project. If demo-motherboard just define the interfaces, does not know how to wire them up to form a Page or Workflow, the assembling logic will all end up in demo-app. We want demo-motherboard not only defines plugin interface, also defines the relationship between the plugin interfaces.
 
 ## UX Problems
 
