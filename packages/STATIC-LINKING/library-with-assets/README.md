@@ -58,7 +58,7 @@ async function render() {
 export { render };
 ```
 
-wasm is inlined as base64, as vite do not know the library user where put the wasm to where, so it have to inline it.
+wasm is inlined as base64, as vite do not know where the wasm will end up in the application, so vite have to inline it to be portable.
 
 css module class is inlined in the javascript, but the actual css content is placed in dist/style.css.
 
