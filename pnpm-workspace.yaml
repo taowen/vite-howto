@@ -1,10 +1,10 @@
 packages:
   - 'packages/CSR/*'
-  - 'packages/CSR/library-with-assets/*'
   - 'packages/SSR/*'
   - 'packages/DYNAMIC-LINKING/*'
   - 'packages/DYNAMIC-LINKING/hybrid-npm-package/*'
   - 'packages/DYNAMIC-LINKING/remote-package/*'
   - 'packages/STATIC-LINKING/*'
+  - 'packages/STATIC-LINKING/library-with-assets/*'
   - 'packages/STATIC-LINKING/multiple-ts-libs/*'
   - 'packages/STATIC-LINKING/inversion-of-control/*'

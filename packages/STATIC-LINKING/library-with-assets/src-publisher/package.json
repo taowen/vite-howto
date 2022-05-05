@@ -1,0 +1,10 @@
+{
+    "name": "@library-with-assets/src-publisher",
+    "private": true,
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "dependencies": {
+    },
+    "devDependencies": {
+    }
+}

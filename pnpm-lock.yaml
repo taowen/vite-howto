@@ -14,21 +14,6 @@ importers:
     devDependencies:
       vite: 2.9.6
 
-  packages/CSR/library-with-assets/lib-consumer:
-    specifiers:
-      '@library-with-assets/lib-publisher': workspace:*
-      vite: ^2.9.1
-    dependencies:
-      '@library-with-assets/lib-publisher': link:../lib-publisher
-    devDependencies:
-      vite: 2.9.6
-
-  packages/CSR/library-with-assets/lib-publisher:
-    specifiers:
-      vite: ^2.9.1
-    devDependencies:
-      vite: 2.9.6
-
   packages/CSR/multiple-html-pages:
     specifiers:
       vite: ^2.9.1
@@ -241,6 +226,33 @@ importers:
       vue: 3.2.33
     devDependencies:
       typescript: 4.6.4
+
+  packages/STATIC-LINKING/library-with-assets/lib-consumer:
+    specifiers:
+      '@library-with-assets/lib-publisher': workspace:*
+      vite: ^2.9.1
+    dependencies:
+      '@library-with-assets/lib-publisher': link:../lib-publisher
+    devDependencies:
+      vite: 2.9.6
+
+  packages/STATIC-LINKING/library-with-assets/lib-publisher:
+    specifiers:
+      vite: ^2.9.1
+    devDependencies:
+      vite: 2.9.6
+
+  packages/STATIC-LINKING/library-with-assets/src-consumer:
+    specifiers:
+      '@library-with-assets/src-publisher': workspace:*
+      vite: ^2.9.1
+    dependencies:
+      '@library-with-assets/src-publisher': link:../src-publisher
+    devDependencies:
+      vite: 2.9.6
+
+  packages/STATIC-LINKING/library-with-assets/src-publisher:
+    specifiers: {}
 
   packages/STATIC-LINKING/multiple-ts-libs:
     specifiers:

@@ -1,9 +1,9 @@
 {
-    "name": "@library-with-assets/lib-consumer",
+    "name": "@library-with-assets/src-consumer",
     "private": true,
     "version": "1.0.0",
     "dependencies": {
-        "@library-with-assets/lib-publisher": "workspace:*"
+        "@library-with-assets/src-publisher": "workspace:*"
     },
     "devDependencies": {
         "vite": "^2.9.1"
