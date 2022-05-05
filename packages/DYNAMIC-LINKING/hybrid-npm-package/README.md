@@ -5,7 +5,8 @@
 How to build a library for both NPM and CDN? So that
 
 * provide proper type definition
-* can be npm installed and run by node.js for unit testing
+* can be npm installed
+* can run in node.js for unit testing
 * can run in browser with old school script tag
 * can run in browser as es module
 * can be bundled by webpack/vite with tree shaking
@@ -15,11 +16,10 @@ We need to build three things
 * package.json main: it should be UMD javascript file for both node.js and old school script tag.
 * package.json module: it should be ESM javascript file for bundler tree shaking and modern browser
 * package.json typings: for typecript
-* we also need to rollup javascript files into a single file to improve the performance in browser
 
 ## DX Problem
 
-During development, we want the library written in typescript to recompile fast. Code start tsc is slow, better to keep tsc live in memory.
+During development, we want the library written in typescript to recompile fast. Cold start tsc is slow, better to keep tsc live in memory.
 
 The unit test can be run continuously, once the code changed, the tests affected can be re-executed to verify the change.
 
@@ -28,6 +28,8 @@ Typescript compilation should be incremental, only compile the file actually mod
 ## UX Problem
 
 The javascript files should be rolled up as one big file to reduce network download time
+
+We do not want test file packaged into production npm library
 
 ## Solution Walkthrough
 
@@ -47,7 +49,7 @@ Watch is implemented by tsc and jest:
 "dev:test": "pnpm jest --watchAll --roots=dist/lib"
 ```
 
-Because tsc and jest both live in memory, the re-compilation process is very fast.
+`run-p` is provided by npm-run-all to run several commands in parallel. Because tsc and jest both live in memory, the re-compilation process is very fast.
 
 ### two tsconfig.json
 
@@ -139,5 +141,7 @@ export default defineConfig({
 ```
 
 By default vite will bundle all dependencies, we ned to externalize them, so that only our own files get rolled up.
+
+Unlike tsc, vite does not compile every file under src, it only bundle the files referenced by src/index.ts. So that tests are ignored.
 
 package.json do not need be changed, as the output file is in the same path.

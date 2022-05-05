@@ -19,7 +19,6 @@
         "dev:esm": "tsc -b --watch",
         "build": "rm -rf dist && run-p build:*",
         "build:typings": "tsc --emitDeclarationOnly --tsBuildInfoFile /dev/null",
-        "build:lib": "vite build",
-        "test": "pnpm tsc -b tsconfig.cjs.json && pnpm jest --roots=dist/lib"
+        "build:lib": "vite build"
     }
 }
