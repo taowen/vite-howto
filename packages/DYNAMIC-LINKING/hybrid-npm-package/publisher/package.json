@@ -5,6 +5,12 @@
     "main": "dist/lib/src/index.js",
     "module": "dist/esm/src/index.js",
     "typings": "dist/typings/src/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/lib/src/index.js",
+            "require": "./dist/esm/src/index.js"
+        }
+    },
     "dependencies": {
         "lodash": "^4.17.21"
     },
@@ -20,6 +26,7 @@
         "dev": "run-p dev:**",
         "dev:cjs": "tsc -b tsconfig.cjs.json --watch",
         "dev:esm": "tsc -b --watch",
+        "dev:test": "pnpm jest --watchAll --roots=dist/lib",
         "build": "rm -rf dist && run-p build:*",
         "build:typings": "tsc --emitDeclarationOnly --tsBuildInfoFile /dev/null",
         "build:lib": "vite build",
