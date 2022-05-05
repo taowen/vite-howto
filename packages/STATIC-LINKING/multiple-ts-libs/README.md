@@ -93,3 +93,5 @@ console.log(`app => ${lib1.lib1Function()} ${lib2.lib2Function()}`)
 ```
 
 We can write a cli, running in node.js, consuming lib1/lib2. If TypeScript has not been compiled, we need to use ts-node instead of node here.
+
+We are not using vite here, because vite does not have the capability to watch multiple projects yet. Every vite.config.ts need a seperate vite process to watch.
