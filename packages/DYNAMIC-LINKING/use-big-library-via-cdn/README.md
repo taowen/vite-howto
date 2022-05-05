@@ -13,7 +13,7 @@ monaco.editor.create(document.body, {
 });
 ```
 
-monaco-editor size is huge. We do not want to bundle it to our application javascript. We do not want to reference CDN and loader code in application logic as well. How to do that?
+monaco-editor size is huge, it is unwise to host it ourself
 
 ## DX Problem
 
@@ -22,6 +22,8 @@ We want to use monaco editor from CDN, but we do not want to lose the typescript
 The monaco editor version should match the version npm installed
 
 The monaco editor should be served from CDN both in development and production, so the mis-behavior can be identified earlier
+
+We do not want write the CDN loading logic in the main source code using monaco, it should be configurable later
 
 ## UX Problem
 

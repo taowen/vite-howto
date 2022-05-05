@@ -19,10 +19,48 @@ Remote package should be able to share javascript object between publisher / con
 
 During development, we might change publisher and consumer at the same time. There should be a way to edit/debug without go through publishing process.
 
+Even if the remote package is dynamically loaded, we still want to statically type check the api compatibility.
+
 ## UX Problem
 
 Loading library dynamically takes time, there should be way to insert loading indicator
 
 ## Solution Walkthrough
+
+### type safety
+
+consumer/tsconfig.json
+
+```json
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "strict": true,
+        "noEmit": true,
+        "types": ["jest"],
+        "lib": ["ESNext", "DOM"],
+        "baseUrl": ".",
+        "paths": {
+            "@publisher/*": ["../publisher/src/*"]
+        }
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}
+```
+
+we are using typescript paths alias to provide type definition of @publisher, so that
+
+```ts
+const { default: plusButton } = await import('@publisher/plusButton')
+plusButton(document.getElementById('slot1')!);
+```
+
+can be compiled with type checking
+
+### more information
 
 refer to https://github.com/originjs/vite-plugin-federation for more information
