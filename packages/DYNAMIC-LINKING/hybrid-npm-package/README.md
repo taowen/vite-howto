@@ -140,7 +140,7 @@ export default defineConfig({
 })
 ```
 
-By default vite will bundle all dependencies, we ned to externalize them, so that only our own files get rolled up.
+By default vite will bundle all dependencies, we need to externalize them, so that only our own files get rolled up.
 
 Unlike tsc, vite does not compile every file under src, it only bundle the files referenced by src/index.ts. So that tests are ignored.
 

@@ -1,3 +1,6 @@
+[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](https://opensource.org/licenses/MIT)<space><space>
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
 # Vite How-to Guide
 
 There are plenty of tutorials on how to use vite to compile code written in latest and hottest technology, this guide is different. It is about how to split application into files/packages, how to use **TypeScript** to ensure compatibility, how to use **Vite** to link them back (either statically or dynamically). Demo code is written in plain old javascript using vanilla web api.
