@@ -1,5 +1,8 @@
 const express = require('express');
 const { createServer: createViteServer } = require('vite');
+const httpProxy = require('http-proxy');
+
+var proxy = httpProxy.createProxyServer({});
 
 async function main() {
     const app = express()
@@ -19,8 +22,9 @@ async function main() {
     app.all('/(.*)', async (req, resp) => {
         req.url = req.originalUrl;
         console.log(req.method, req.url);
-        const { default: handle } = await vite.ssrLoadModule('./server/server.ts');
-        handle(req, resp, (e) => {
+        proxy.web(req, resp, {
+            target: 'http://localhost:8000'
+        }, (e) => {
             if (e) {
                 vite.ssrFixStacktrace(e)
                 console.error(e.stack)
