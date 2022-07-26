@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
-const viewModels = new Map<any, Map<string, any>>();
+// 每个 React 组件类型的 ViewModel 相当于一张表
+// 每个 React 组件实例，通过自己的 name 在这张表上有自己的一行
+// 这里的 viewModels 通过双层 Map 包含了所有的 React 组件实例的 ViewModel
+const viewModels = new Map<Function, Map<string | undefined, object>>();
 
-export function getViewModel<M>(component: { __ViewModelFactory: () => M}, name: string): M {
+export function getViewModel<M extends object>(component: Function & { __ViewModelFactory: () => M}, name?: string): M {
   let perComponentType = viewModels.get(component);
   if (!perComponentType) {
     viewModels.set(component, perComponentType = new Map<string, object>());
@@ -11,18 +14,18 @@ export function getViewModel<M>(component: { __ViewModelFactory: () => M}, name:
   if (!viewModel) {
     perComponentType.set(name, viewModel = component.__ViewModelFactory());
   }
-  return viewModel;
+  return viewModel as M;
 }
 
-export function listViewModels<M>(component: { __ViewModelFactory: () => M}): Map<string, M> {
+export function listViewModels<M extends object>(component: Function & { __ViewModelFactory: () => M}): Map<string, M> {
     let perComponentType = viewModels.get(component);
     if (!perComponentType) {
         viewModels.set(component, perComponentType = new Map<string, object>());
     }
-    return perComponentType;
+    return perComponentType as Map<string, M>;
 }
 
-export function removeViewModel<M>(component: { __ViewModelFactory: () => M}, name: string) {
+export function removeViewModel<M>(component: Function & { __ViewModelFactory: () => M}, name?: string) {
     let perComponentType = viewModels.get(component);
     if (!perComponentType) {
         return;
@@ -33,20 +36,17 @@ export function removeViewModel<M>(component: { __ViewModelFactory: () => M}, na
     }
 }
 
-export function useViewModel<C, R extends { options: any }>(viewModelFactory: () => R, component: (options: R['options'], viewModel: R) => C) {
-  const wrapper = (options: Partial<R['options']> & { name: string }): C => {
-    const viewModel: any = getViewModel(wrapper, options.name);
-    useEffect(() => {
-        removeViewModel(wrapper, options.name);
-    }, []);
+export function useViewModel<P, C, R extends object>(viewModelFactory: () => R, component: (props: P, viewModel: R) => C) {
+  const wrapper = (props: P & { name?: string }): C => {
+    const viewModel: any = getViewModel(wrapper, props.name);
     const viewModelPropNames = useRef<string[] | undefined>(undefined);
     if (viewModelPropNames.current) {
         for (const _ of viewModelPropNames.current) {
             useState();
         }
     } else {
+        // 第一次渲染的时候，把本地状态和ViewModel做一个绑定
         viewModelPropNames.current = Object.getOwnPropertyNames(viewModel);
-        viewModelPropNames.current.splice(viewModelPropNames.current.indexOf('options'), 1);
         for (const propName of viewModelPropNames.current) {
             let val = viewModel[propName];
             const [_, setProp] = useState(val);
@@ -62,7 +62,7 @@ export function useViewModel<C, R extends { options: any }>(viewModelFactory: ()
             });
         }
     }
-    return component(options, viewModel);
+    return component(props, viewModel);
   };
   wrapper.__ViewModelFactory = viewModelFactory;
   return wrapper;
